@@ -6,7 +6,7 @@ const nextBtn = document.getElementById("nextMonth") as HTMLButtonElement;
 // State: initialized to current date
 let displayDate: Date = new Date();
 
-function render(): void {
+const render = (): void => {
   // Clear previous content
   calendarDays.innerHTML = "";
 
@@ -49,7 +49,7 @@ function render(): void {
 
     calendarDays.appendChild(dayElement);
   }
-}
+};
 
 // Event Listeners
 prevBtn.onclick = (): void => {
