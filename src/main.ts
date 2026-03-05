@@ -3,64 +3,63 @@ const calendarDays = document.getElementById("calendarDays") as HTMLElement;
 const prevBtn = document.getElementById("prevMonth") as HTMLButtonElement;
 const nextBtn = document.getElementById("nextMonth") as HTMLButtonElement;
 
-// State: initialized to current date
 let displayDate: Date = new Date();
 
 const render = (): void => {
-  // Clear previous content
   calendarDays.innerHTML = "";
 
-  const year: number = displayDate.getFullYear();
-  const month: number = displayDate.getMonth();
+  const year = displayDate.getFullYear();
+  const month = displayDate.getMonth();
 
-  // 1. Update Header
-  const monthName: string = displayDate.toLocaleString("default", {
-    month: "long",
-  });
+  const monthName = displayDate.toLocaleString("default", { month: "long" });
   monthTitle.innerText = `${monthName} ${year}`;
 
-  // 2. Logic: Find start of month and total days
-  const firstDayOfMonth: number = new Date(year, month, 1).getDay(); // 0 = Sunday
-  const daysInMonth: number = new Date(year, month + 1, 0).getDate();
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  // 3. Create Padding (Empty slots for days of previous month)
-  for (let i = 0; i < firstDayOfMonth; i++) {
-    const slot: HTMLDivElement = document.createElement("div");
-    slot.classList.add("day", "empty");
+  for (let i = 0; i < firstDay; i++) {
+    const slot = document.createElement("div");
+    slot.classList.add("day");
     calendarDays.appendChild(slot);
   }
 
-  // 4. Create Day elements
-  const today: Date = new Date();
+  const today = new Date();
 
   for (let i = 1; i <= daysInMonth; i++) {
-    const dayElement: HTMLDivElement = document.createElement("div");
-    dayElement.classList.add("day");
-    dayElement.innerText = i.toString();
+    const day = document.createElement("div");
+    day.classList.add("day");
+    day.innerText = i.toString();
 
-    // Check if it's "Today"
     if (
       i === today.getDate() &&
       month === today.getMonth() &&
       year === today.getFullYear()
     ) {
-      dayElement.classList.add("today");
+      day.classList.add("today");
     }
 
-    calendarDays.appendChild(dayElement);
+    calendarDays.appendChild(day);
   }
 };
 
-// Event Listeners
-prevBtn.onclick = (): void => {
+const animate = (direction: "next" | "prev") => {
+  calendarDays.classList.remove("flip-next", "flip-prev");
+
+  void calendarDays.offsetWidth;
+
+  calendarDays.classList.add(direction === "next" ? "flip-next" : "flip-prev");
+};
+
+prevBtn.onclick = () => {
+  animate("prev");
   displayDate.setMonth(displayDate.getMonth() - 1);
-  render();
+  setTimeout(render, 200);
 };
 
-nextBtn.onclick = (): void => {
+nextBtn.onclick = () => {
+  animate("next");
   displayDate.setMonth(displayDate.getMonth() + 1);
-  render();
+  setTimeout(render, 200);
 };
 
-// Initial load
 render();

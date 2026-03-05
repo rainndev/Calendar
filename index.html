@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style></style>
     <title>Simple JS Calendar</title>
-    <link rel="stylesheet" href="src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/css/fonts.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
   </head>
-  <body>
+  <body class="press-start-2p-regular">
     <div class="calendar-container">
       <div class="calendar-header">
-        <button id="prevMonth">&lt;</button>
+        <button id="prevMonth" class="buttons">&lt;</button>
         <h2 id="monthTitle">Month Year</h2>
-        <button id="nextMonth">&gt;</button>
+        <button id="nextMonth" class="buttons">&gt;</button>
       </div>
 
       <div class="grid">
@@ -28,5 +35,5 @@
       <div id="calendarDays" class="grid" style="padding-top: 0"></div>
     </div>
   </body>
-  <script src="/src/main.ts"></script>
+  <script src="./src/main.ts"></script>
 </html>
