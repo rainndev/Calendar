@@ -1,4 +1,5 @@
 import { animate, stagger } from "motion";
+import { decryptText } from "./utils/decrypted";
 
 const monthTitle = document.getElementById("monthTitle") as HTMLElement;
 const calendarDays = document.getElementById("calendarDays") as HTMLElement;
@@ -47,6 +48,7 @@ const render = (): void => {
 
   const monthName = displayDate.toLocaleString("default", { month: "long" });
   monthTitle.innerText = `${monthName} ${year}`;
+  decryptText(monthTitle, `${monthName} ${year}`);
 
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
