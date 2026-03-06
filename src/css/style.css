@@ -7,7 +7,6 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,6 +48,7 @@ body {
 .calendar-body {
   border-radius: 1rem;
   border: 5px solid var(--text-color);
+  background-color: var(--bg-color);
   box-shadow: 12px 12px 0px 0px var(--text-color);
 }
 
@@ -108,4 +108,15 @@ body {
 .buttons:active {
   transform: translateX(4px) translateY(4px);
   box-shadow: none;
+}
+
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-color);
+  background-image: radial-gradient(var(--text-color) 1px, transparent 1px);
+  background-size: 16px 16px;
 }

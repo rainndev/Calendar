@@ -1,5 +1,6 @@
 export const decryptText = (el: HTMLElement, finalText: string) => {
-  const chars = "0123456789";
+  const chars =
+    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;:,.<>?";
   let iterations = 0;
 
   const interval = setInterval(() => {
