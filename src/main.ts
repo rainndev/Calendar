@@ -22,7 +22,7 @@ const animateDays = () => {
   animate(
     ".day",
     {
-      scale: [0.5, 1],
+      scale: [0, 1],
       y: [20, 0],
       opacity: [0, 1],
     },
@@ -30,7 +30,7 @@ const animateDays = () => {
       type: "spring",
       stiffness: 300,
       damping: 15,
-      delay: stagger(0.05),
+      delay: stagger(0.02),
     },
   );
 };
