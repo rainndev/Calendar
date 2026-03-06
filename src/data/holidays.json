@@ -1,0 +1,116 @@
+[
+  {
+    "date": "01-01",
+    "name": "New Year's Day",
+    "description": "First day of the Gregorian calendar year, celebrated nationwide.",
+    "type": "Regular Holiday"
+  },
+  {
+    "date": "02-17",
+    "name": "Chinese New Year",
+    "description": "Lunar New Year celebrated by Chinese-Filipino communities (special non-working day).",
+    "type": "Special Non-Working Day"
+  },
+  {
+    "date": "02-25",
+    "name": "EDSA People Power Revolution Anniversary",
+    "description": "Commemorates the 1986 People Power Revolution (special working day).",
+    "type": "Special Working Day"
+  },
+  {
+    "date": "04-02",
+    "name": "Maundy Thursday",
+    "description": "Christian observance on the Thursday before Easter, part of Holy Week.",
+    "type": "Regular Holiday"
+  },
+  {
+    "date": "04-03",
+    "name": "Good Friday",
+    "description": "Christian observance commemorating the crucifixion of Jesus Christ.",
+    "type": "Regular Holiday"
+  },
+  {
+    "date": "04-04",
+    "name": "Black Saturday",
+    "description": "Day of silence between Good Friday and Easter Sunday in Holy Week.",
+    "type": "Additional Special Non-Working Day"
+  },
+  {
+    "date": "04-09",
+    "name": "Araw ng Kagitingan",
+    "description": "Day of Valor commemorating Filipino and American defenders of Bataan in WWII.",
+    "type": "Regular Holiday"
+  },
+  {
+    "date": "05-01",
+    "name": "Labor Day",
+    "description": "Celebrates the contributions of workers.",
+    "type": "Regular Holiday"
+  },
+  {
+    "date": "06-12",
+    "name": "Independence Day",
+    "description": "Marks the Philippines’ declaration of independence from Spain in 1898.",
+    "type": "Regular Holiday"
+  },
+  {
+    "date": "08-21",
+    "name": "Ninoy Aquino Day",
+    "description": "Commemorates the assassination of Benigno 'Ninoy' Aquino Jr.",
+    "type": "Special Non-Working Day"
+  },
+  {
+    "date": "08-31",
+    "name": "National Heroes Day",
+    "description": "Honors Filipino heroes; observed on the last Monday of August.",
+    "type": "Regular Holiday"
+  },
+  {
+    "date": "11-01",
+    "name": "All Saints' Day",
+    "description": "Day to remember all saints; observed nationwide.",
+    "type": "Special Non-Working Day"
+  },
+  {
+    "date": "11-02",
+    "name": "All Souls' Day",
+    "description": "Day of remembrance for the faithful departed.",
+    "type": "Additional Special Non-Working Day"
+  },
+  {
+    "date": "11-30",
+    "name": "Bonifacio Day",
+    "description": "Celebrates Andres Bonifacio, a national revolutionary hero.",
+    "type": "Regular Holiday"
+  },
+  {
+    "date": "12-08",
+    "name": "Feast of the Immaculate Conception of Mary",
+    "description": "Catholic feast honoring the Immaculate Conception.",
+    "type": "Special Non-Working Day"
+  },
+  {
+    "date": "12-24",
+    "name": "Christmas Eve",
+    "description": "Day before Christmas celebrated with family gatherings.",
+    "type": "Additional Special Non-Working Day"
+  },
+  {
+    "date": "12-25",
+    "name": "Christmas Day",
+    "description": "Christian celebration of the birth of Jesus Christ.",
+    "type": "Regular Holiday"
+  },
+  {
+    "date": "12-30",
+    "name": "Rizal Day",
+    "description": "Honors national hero Dr. Jose Rizal.",
+    "type": "Regular Holiday"
+  },
+  {
+    "date": "12-31",
+    "name": "Last Day of the Year",
+    "description": "New Year’s Eve observed as a special non-working day.",
+    "type": "Special Non-Working Day"
+  }
+]

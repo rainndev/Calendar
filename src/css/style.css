@@ -2,6 +2,7 @@
   --primary-color: oklch(87.9% 0.169 91.605);
   --bg-color: oklch(0.974 0.003 174.48);
   --text-color: oklch(0.22 0.05 280);
+  --gray-color: oklch(0.22 0.05 280/0.5);
   --black-color: oklch(0.22 0.05 280/0.5);
   --accent-color: oklch(0.978 0.058 102.16);
 }
@@ -134,4 +135,9 @@ body {
 
 #time {
   font-size: 0.9rem;
+}
+
+.holiday {
+  background-color: var(--accent-color);
+  border: 2px dashed var(--text-color);
 }

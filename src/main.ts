@@ -1,4 +1,5 @@
 import { animate, stagger } from "motion";
+import holidayData from "./data/holidays.json";
 import { decryptText } from "./utils/decrypted";
 
 const monthTitle = document.getElementById("monthTitle") as HTMLElement;
@@ -74,6 +75,18 @@ const render = (): void => {
   for (let i = 1; i <= daysInMonth; i++) {
     const day = document.createElement("div");
     day.classList.add("day");
+    holidayData.forEach((holiday) => {
+      const [hMonth, hDay] = holiday.date.split("-").map(Number);
+
+      if (hDay === i && hMonth === month + 1) {
+        day.classList.add("holiday");
+        const tooltip = document.createElement("div");
+        tooltip.classList.add("tooltip");
+        tooltip.innerText = holiday.name;
+        day.appendChild(tooltip);
+      }
+    });
+
     day.innerText = i.toString();
 
     if (
