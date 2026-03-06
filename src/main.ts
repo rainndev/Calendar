@@ -5,6 +5,16 @@ const monthTitle = document.getElementById("monthTitle") as HTMLElement;
 const calendarDays = document.getElementById("calendarDays") as HTMLElement;
 const prevBtn = document.getElementById("prevMonth") as HTMLButtonElement;
 const nextBtn = document.getElementById("nextMonth") as HTMLButtonElement;
+const timeDisplay = document.getElementById("time") as HTMLParagraphElement;
+
+setInterval(() => {
+  const now = new Date();
+  const hours = now.getHours() % 12 || 12;
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const seconds = now.getSeconds().toString().padStart(2, "0");
+  const ampm = now.getHours() >= 12 ? "PM" : "AM";
+  timeDisplay.innerText = `Time: ${hours}:${minutes}:${seconds} ${ampm}`;
+}, 1000);
 
 let displayDate: Date = new Date();
 

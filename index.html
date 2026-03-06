@@ -17,7 +17,20 @@
   <body class="press-start-2p-regular grid-bg">
     <div class="calendar-container">
       <div class="calendar-header">
-        <h2 id="monthTitle">Month Year</h2>
+        <div>
+          <div style="display: flex; align-items: center; gap: 1rem">
+            <img
+              src="./public/calendar-icon.svg"
+              alt="time-icon"
+              style="height: 40px"
+            />
+            <h2 id="monthTitle">Month Year</h2>
+          </div>
+
+          <div class="gap-line"></div>
+          <p id="time">Time: 11:49 PM</p>
+        </div>
+
         <div>
           <button id="prevMonth" class="buttons">&lt;</button>
           <button id="nextMonth" class="buttons">&gt;</button>

@@ -101,8 +101,11 @@ body {
 
 .buttons {
   font-weight: bold;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 0.5rem;
   border: 5px solid var(--text-color);
-  box-shadow: 4px 4px 0px 0px #09090b;
+  box-shadow: 4px 4px 0px 0px var(--text-color);
+  color: var(--text-color);
   transition: all 0.2s;
   border-radius: 0.5rem;
 }
@@ -121,4 +124,14 @@ body {
   background-color: var(--bg-color);
   background-image: radial-gradient(var(--black-color) 1px, transparent 1px);
   background-size: 20px 20px;
+}
+
+.gap-line {
+  height: 2px;
+  background-color: var(--text-color);
+  border-radius: 5px;
+}
+
+#time {
+  font-size: 0.9rem;
 }
