@@ -42,22 +42,12 @@ const render = (): void => {
   }
 };
 
-const animate = (direction: "next" | "prev") => {
-  calendarDays.classList.remove("flip-next", "flip-prev");
-
-  void calendarDays.offsetWidth;
-
-  calendarDays.classList.add(direction === "next" ? "flip-next" : "flip-prev");
-};
-
 prevBtn.onclick = () => {
-  animate("prev");
   displayDate.setMonth(displayDate.getMonth() - 1);
   setTimeout(render, 200);
 };
 
 nextBtn.onclick = () => {
-  animate("next");
   displayDate.setMonth(displayDate.getMonth() + 1);
   setTimeout(render, 200);
 };
