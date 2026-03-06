@@ -139,5 +139,5 @@ body {
 
 .holiday {
   background-color: var(--accent-color);
-  border: 2px dashed var(--text-color);
+  border: 2px dashed var(--gray-color);
 }
