@@ -21,7 +21,13 @@ let displayDate: Date = new Date();
 
 const addHolidayTooltip = (
   day: HTMLElement,
-  holiday: { name: string; description: string },
+  holiday: {
+    name: string;
+    description: string;
+    type: string;
+    date: string;
+    image: string;
+  },
 ) => {
   // create tooltip
   const tooltip = document.createElement("div");
@@ -29,9 +35,7 @@ const addHolidayTooltip = (
   tooltip.innerHTML = `
   <strong>${holiday.name}</strong><br/>
   <small>${holiday.description}</small><br/>
-  <img class="holiday-image" src="https://bxcode.com/image/150" alt="Holiday image" style="
-   
-  "/>
+  <img class="holiday-image" src="${holiday.image}"/>
 `;
 
   document.body.appendChild(tooltip);
