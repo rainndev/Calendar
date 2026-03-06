@@ -9,14 +9,14 @@
   {
     "date": "02-17",
     "name": "Chinese New Year",
-    "description": "Lunar New Year celebrated by Chinese-Filipino communities (special non-working day).",
+    "description": "Lunar New Year celebrated by Chinese-Filipino communities.",
     "type": "Special Non-Working Day",
     "image": "./public/holidays-img/new-year.webp"
   },
   {
     "date": "02-25",
     "name": "EDSA People Power Revolution Anniversary",
-    "description": "Commemorates the 1986 People Power Revolution (special working day).",
+    "description": "Commemorates the 1986 People Power Revolution.",
     "type": "Special Working Day",
     "image": "./public/holidays-img/new-year.webp"
   },

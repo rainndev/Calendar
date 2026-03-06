@@ -33,6 +33,7 @@ const addHolidayTooltip = (
   const tooltip = document.createElement("div");
   tooltip.classList.add("tooltip");
   tooltip.innerHTML = `
+  <p class="holiday-type">${holiday.type}</p>
   <strong>${holiday.name}</strong><br/>
   <small>${holiday.description}</small><br/>
   <img class="holiday-image" src="${holiday.image}"/>
