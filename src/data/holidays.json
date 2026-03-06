@@ -11,125 +11,125 @@
     "name": "Chinese New Year",
     "description": "Lunar New Year celebrated by Chinese-Filipino communities.",
     "type": "Special Non-Working Day",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/chinise-newyear.webp"
   },
   {
     "date": "02-25",
     "name": "EDSA People Power Revolution Anniversary",
     "description": "Commemorates the 1986 People Power Revolution.",
     "type": "Special Working Day",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/edsa-people-power.webp"
   },
   {
     "date": "04-02",
     "name": "Maundy Thursday",
     "description": "Christian observance on the Thursday before Easter, part of Holy Week.",
     "type": "Regular Holiday",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/maundy-thursday.webp"
   },
   {
     "date": "04-03",
     "name": "Good Friday",
     "description": "Christian observance commemorating the crucifixion of Jesus Christ.",
     "type": "Regular Holiday",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/good-friday.webp"
   },
   {
     "date": "04-04",
     "name": "Black Saturday",
     "description": "Day of silence between Good Friday and Easter Sunday in Holy Week.",
     "type": "Additional Special Non-Working Day",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/black-saturday.webp"
   },
   {
     "date": "04-09",
     "name": "Araw ng Kagitingan",
     "description": "Day of Valor commemorating Filipino and American defenders of Bataan in WWII.",
     "type": "Regular Holiday",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/araw-ng-gagitingan.webp"
   },
   {
     "date": "05-01",
     "name": "Labor Day",
     "description": "Celebrates the contributions of workers.",
     "type": "Regular Holiday",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/labor-day.webp"
   },
   {
     "date": "06-12",
     "name": "Independence Day",
     "description": "Marks the Philippines’ declaration of independence from Spain in 1898.",
     "type": "Regular Holiday",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/independence-day.webp"
   },
   {
     "date": "08-21",
     "name": "Ninoy Aquino Day",
     "description": "Commemorates the assassination of Benigno 'Ninoy' Aquino Jr.",
     "type": "Special Non-Working Day",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/ninoy-aquino-day.webp"
   },
   {
     "date": "08-31",
     "name": "National Heroes Day",
     "description": "Honors Filipino heroes; observed on the last Monday of August.",
     "type": "Regular Holiday",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/national-heroes-day.webp"
   },
   {
     "date": "11-01",
     "name": "All Saints' Day",
     "description": "Day to remember all saints; observed nationwide.",
     "type": "Special Non-Working Day",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/all-saints-day.webp"
   },
   {
     "date": "11-02",
     "name": "All Souls' Day",
     "description": "Day of remembrance for the faithful departed.",
     "type": "Additional Special Non-Working Day",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/all-souls-day.webp"
   },
   {
     "date": "11-30",
     "name": "Bonifacio Day",
     "description": "Celebrates Andres Bonifacio, a national revolutionary hero.",
     "type": "Regular Holiday",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/bonifacio-day.webp"
   },
   {
     "date": "12-08",
     "name": "Feast of the Immaculate Conception of Mary",
     "description": "Catholic feast honoring the Immaculate Conception.",
     "type": "Special Non-Working Day",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/immaculate-conception.webp"
   },
   {
     "date": "12-24",
     "name": "Christmas Eve",
     "description": "Day before Christmas celebrated with family gatherings.",
     "type": "Additional Special Non-Working Day",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/christmas-eve.webp"
   },
   {
     "date": "12-25",
     "name": "Christmas Day",
     "description": "Christian celebration of the birth of Jesus Christ.",
     "type": "Regular Holiday",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/christmas-day.webp"
   },
   {
     "date": "12-30",
     "name": "Rizal Day",
     "description": "Honors national hero Dr. Jose Rizal.",
     "type": "Regular Holiday",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/rizal-day.webp"
   },
   {
     "date": "12-31",
     "name": "Last Day of the Year",
     "description": "New Year’s Eve observed as a special non-working day.",
     "type": "Special Non-Working Day",
-    "image": "./public/holidays-img/new-year.webp"
+    "image": "./public/holidays-img/last-day-year.webp"
   }
 ]
