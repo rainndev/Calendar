@@ -35,7 +35,7 @@
 
 .weather-body {
   height: 100%;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 1rem;
   border: 5px solid var(--text-color);
   background-color: var(--bg-color);

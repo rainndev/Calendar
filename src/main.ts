@@ -1,4 +1,4 @@
-import { Calendar } from "./js/Calendar";
+import { MainUI } from "./js/MainUI";
 
-const calendar = new Calendar();
-calendar.CalendarUI.render();
+const mainUI = new MainUI();
+mainUI.render();
