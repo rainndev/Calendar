@@ -34,24 +34,6 @@ export class CalendarUI {
     this.prevBtn.addEventListener("click", () => this.Calendar.prevMonth());
     this.nextBtn.addEventListener("click", () => this.Calendar.nextMonth());
 
-    // Tab switching
-    const switchTab = (show: HTMLElement, hide: HTMLElement) => {
-      show.style.display = "block";
-      hide.style.display = "none";
-    };
-
-    this.calendarTabBtn.addEventListener("click", () => {
-      this.calendarTabBtn.classList.add("active-tab");
-      this.weatherTabBtn.classList.remove("active-tab");
-      switchTab(this.calendarElement, this.weatherElement);
-    });
-
-    this.weatherTabBtn.addEventListener("click", () => {
-      this.weatherTabBtn.classList.add("active-tab");
-      this.calendarTabBtn.classList.remove("active-tab");
-      switchTab(this.weatherElement, this.calendarElement);
-    });
-
     setInterval(() => {
       this.timeDisplay.innerText = `Time: ${this.Calendar.getCurrentTime()}`;
     }, 1000);
