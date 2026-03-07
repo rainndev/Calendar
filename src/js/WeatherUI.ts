@@ -27,7 +27,7 @@ export class WeatherUI {
   async render() {
     const weather = await this.weather.getWeather();
 
-    this.currentTempElement.innerText = `Summary Weather: ${weather.current?.temperature_2m}°C`;
+    this.currentTempElement.innerText = `${weather.current?.temperature_2m}°C`;
     this.windSpeedElement.innerText = `Wind Speed: ${weather.current?.wind_speed_10m} km/h`;
     this.humidityElement.innerText = `Humidity: ${weather.current?.relative_humidity_2m}%`;
     this.feelsLikeElement.innerText = `Feels Like: ${weather.current?.apparent_temperature}°C`;

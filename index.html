@@ -65,17 +65,36 @@
 
       <div id="weather-element" class="weather-container">
         <div class="weather-header">
-          <h1>Weather Forecast</h1>
+          <div>
+            <div style="display: flex; align-items: center; gap: 1rem">
+              <img
+                src="./public/calendar-icon.svg"
+                alt="time-icon"
+                style="height: 40px"
+              />
+              <h2 id="monthTitle">March 7 2026</h2>
+            </div>
+
+            <div class="gap-line"></div>
+            <p id="time">Time: 00:00:00 PM</p>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; flex-direction: column"
+          >
+            <img
+              id="weather-icon"
+              width="200px"
+              style="object-fit: fill"
+              src="./public/weather-icons/icon-drizzle.webp"
+              alt=""
+            />
+
+            <h1 id="current-temp">21.23</h1>
+          </div>
         </div>
 
         <div class="weather-body">
-          <img
-            id="weather-icon"
-            width="200px"
-            src="./public/weather-icons/icon-drizzle.webp"
-            alt=""
-          />
-          <h1 id="current-temp">Summary Weather: 21</h1>
           <p id="wind-speed">Wind Speed Temperature: 2.2km/h</p>
           <p id="humidity">Humidity: 79</p>
           <p id="feels-like">Feels like: 31.6</p>
