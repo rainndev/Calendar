@@ -155,6 +155,13 @@ body {
   height: fit-content;
 }
 
+.active-tab {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: 5px solid var(--text-color);
+  border-bottom: none;
+}
+
 .tabs:active {
   transform: translateX(4px) translateY(4px);
   box-shadow: none;

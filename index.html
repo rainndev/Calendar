@@ -13,19 +13,20 @@
     />
     <link rel="stylesheet" href="./src/css/fonts.css" />
     <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/weather.css" />
   </head>
   <body class="press-start-2p-regular grid-bg">
     <div class="container">
       <div class="tabs-container">
         <div>
-          <button class="tabs">Calendar</button>
-          <button class="tabs">Weather</button>
+          <button id="calendar-tab-btn" class="tabs">Calendar</button>
+          <button id="weather-tab-btn" class="tabs">Weather</button>
         </div>
 
         <img src="./public/welcome-wave-half.png" alt="welcome-img" />
       </div>
 
-      <div class="calendar-container">
+      <div id="calendar-element" class="calendar-container">
         <div class="calendar-header">
           <div>
             <div style="display: flex; align-items: center; gap: 1rem">
@@ -60,6 +61,14 @@
 
           <div id="calendarDays" class="grid" style="padding-top: 0"></div>
         </div>
+      </div>
+
+      <div id="weather-element" class="weather-container">
+        <div class="weather-header">
+          <h1>Weather Forecast</h1>
+        </div>
+
+        <div class="weather-body"><h1>test</h1></div>
       </div>
     </div>
   </body>
