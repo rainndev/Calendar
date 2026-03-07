@@ -1,7 +1,6 @@
 .weather-container {
   display: none;
   width: 1000px;
-  height: 1000px;
   overflow: hidden;
   padding: 1rem;
   padding-top: 0;
@@ -34,7 +33,6 @@
 }
 
 .weather-body {
-  height: 100%;
   padding: 2rem;
   border-radius: 1rem;
   border: 5px solid var(--text-color);

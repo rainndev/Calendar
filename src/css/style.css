@@ -158,20 +158,20 @@ a:active,
   font-family: "Press Start 2P", system-ui;
   border: 5px solid var(--text-color);
   border-bottom: none;
-  box-shadow: 4px 4px 0px 0px var(--text-color);
+  box-shadow: 4px 4px 0px 0px var(--gray-color);
   color: var(--text-color);
   transition: all 0.2s;
   border-radius: 1rem 1rem 0rem 0rem;
   padding: 15px;
   font-size: 0.8rem;
   cursor: pointer;
-  background-color: var(--white-color);
+  background-color: transparent;
   height: fit-content;
 }
 
 .active-tab {
-  background-color: var(--accent-color);
-  color: var(--text-color);
+  background-color: var(--text-color);
+  color: var(--accent-color);
   border: 5px solid var(--text-color);
   border-bottom: none;
 }
