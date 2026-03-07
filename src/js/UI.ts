@@ -1,30 +1,59 @@
 import { Animate } from "./Animate";
 import { Calendar } from "./Calendar";
+
 export class UI {
   monthTitle: HTMLHeadingElement;
   calendarDays: HTMLElement;
   prevBtn: HTMLButtonElement;
   nextBtn: HTMLButtonElement;
   timeDisplay: HTMLParagraphElement;
+  calendarElement: HTMLElement;
+  weatherElement: HTMLElement;
+  calendarTabBtn: HTMLButtonElement;
+  weatherTabBtn: HTMLButtonElement;
   Calendar: Calendar;
 
   constructor(calendar: Calendar) {
-    this.monthTitle = document.getElementById(
-      "monthTitle",
-    ) as HTMLHeadingElement;
-    this.calendarDays = document.getElementById("calendarDays") as HTMLElement;
-    this.prevBtn = document.getElementById("prevMonth") as HTMLButtonElement;
-    this.nextBtn = document.getElementById("nextMonth") as HTMLButtonElement;
-    this.timeDisplay = document.getElementById("time") as HTMLParagraphElement;
+    // Utility to fetch element once
+    const $ = <T extends HTMLElement>(id: string) =>
+      document.getElementById(id) as T;
+
+    this.monthTitle = $("monthTitle");
+    this.calendarDays = $("calendarDays");
+    this.prevBtn = $("prevMonth");
+    this.nextBtn = $("nextMonth");
+    this.timeDisplay = $("time");
+    this.calendarElement = $("calendar-element");
+    this.weatherElement = $("weather-element");
+    this.calendarTabBtn = $("calendar-tab-btn");
+    this.weatherTabBtn = $("weather-tab-btn");
+
     this.Calendar = calendar;
 
+    // Navigation buttons
     this.prevBtn.addEventListener("click", () => this.Calendar.prevMonth());
     this.nextBtn.addEventListener("click", () => this.Calendar.nextMonth());
 
-    setInterval(() => {
-      const currentTimeFormatted = this.Calendar.getCurrentTime();
+    // Tab switching
+    const switchTab = (show: HTMLElement, hide: HTMLElement) => {
+      show.style.display = "block";
+      hide.style.display = "none";
+    };
 
-      this.timeDisplay.innerText = `Time: ${currentTimeFormatted}`;
+    this.calendarTabBtn.addEventListener("click", () => {
+      this.calendarTabBtn.classList.add("active-tab");
+      this.weatherTabBtn.classList.remove("active-tab");
+      switchTab(this.calendarElement, this.weatherElement);
+    });
+
+    this.weatherTabBtn.addEventListener("click", () => {
+      this.weatherTabBtn.classList.add("active-tab");
+      this.calendarTabBtn.classList.remove("active-tab");
+      switchTab(this.weatherElement, this.calendarElement);
+    });
+
+    setInterval(() => {
+      this.timeDisplay.innerText = `Time: ${this.Calendar.getCurrentTime()}`;
     }, 1000);
   }
 
