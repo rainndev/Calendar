@@ -15,40 +15,51 @@
     <link rel="stylesheet" href="./src/css/style.css" />
   </head>
   <body class="press-start-2p-regular grid-bg">
-    <div class="calendar-container">
-      <div class="calendar-header">
+    <div class="container">
+      <div class="tabs-container">
         <div>
-          <div style="display: flex; align-items: center; gap: 1rem">
-            <img
-              src="./public/calendar-icon.svg"
-              alt="time-icon"
-              style="height: 40px"
-            />
-            <h2 id="monthTitle">Month Year</h2>
-          </div>
-
-          <div class="gap-line"></div>
-          <p id="time">Time: 00:00:00 PM</p>
+          <button class="tabs">Calendar</button>
+          <button class="tabs">Weather</button>
         </div>
 
-        <div>
-          <button id="prevMonth" class="buttons">&lt;</button>
-          <button id="nextMonth" class="buttons">&gt;</button>
-        </div>
+        <img src="./public/welcome-wave-half.png" alt="welcome-img" />
       </div>
 
-      <div class="calendar-body">
-        <div class="grid">
-          <div class="day-name">Sun</div>
-          <div class="day-name">Mon</div>
-          <div class="day-name">Tue</div>
-          <div class="day-name">Wed</div>
-          <div class="day-name">Thu</div>
-          <div class="day-name">Fri</div>
-          <div class="day-name">Sat</div>
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <div>
+            <div style="display: flex; align-items: center; gap: 1rem">
+              <img
+                src="./public/calendar-icon.svg"
+                alt="time-icon"
+                style="height: 40px"
+              />
+              <h2 id="monthTitle">Month Year</h2>
+            </div>
+
+            <div class="gap-line"></div>
+            <p id="time">Time: 00:00:00 PM</p>
+          </div>
+
+          <div>
+            <button id="prevMonth" class="buttons">&lt;</button>
+            <button id="nextMonth" class="buttons">&gt;</button>
+          </div>
         </div>
 
-        <div id="calendarDays" class="grid" style="padding-top: 0"></div>
+        <div class="calendar-body">
+          <div class="grid">
+            <div class="day-name">Sun</div>
+            <div class="day-name">Mon</div>
+            <div class="day-name">Tue</div>
+            <div class="day-name">Wed</div>
+            <div class="day-name">Thu</div>
+            <div class="day-name">Fri</div>
+            <div class="day-name">Sat</div>
+          </div>
+
+          <div id="calendarDays" class="grid" style="padding-top: 0"></div>
+        </div>
       </div>
     </div>
   </body>
