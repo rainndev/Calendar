@@ -2,12 +2,12 @@ import { animate } from "motion";
 import holidayData from "../data/holidays.json";
 import type { HolidayType } from "../types/holiday.types";
 import { Animate } from "./Animate";
-import { UI } from "./CalendarUI";
+import { CalendarUI } from "./CalendarUI";
 
 export class Calendar {
   currentDate: Date;
   displayDate: Date;
-  UI: UI;
+  CalendarUI: CalendarUI;
   year: number;
   month: number;
   holdTimer: number | undefined;
@@ -15,7 +15,7 @@ export class Calendar {
 
   constructor() {
     this.currentDate = new Date();
-    this.UI = new UI(this);
+    this.CalendarUI = new CalendarUI(this);
     this.displayDate = new Date();
     this.year = this.displayDate.getFullYear();
     this.month = this.displayDate.getMonth();
@@ -112,7 +112,7 @@ export class Calendar {
     for (let i = 0; i < firstDay; i++) {
       const slot = document.createElement("div");
       slot.classList.add("day");
-      this.UI.calendarDays.appendChild(slot);
+      this.CalendarUI.calendarDays.appendChild(slot);
     }
   }
 
@@ -141,7 +141,7 @@ export class Calendar {
         day.classList.add("today");
       }
 
-      this.UI.calendarDays.appendChild(day);
+      this.CalendarUI.calendarDays.appendChild(day);
     }
 
     Animate.animateListStagger(".day");
@@ -156,10 +156,10 @@ export class Calendar {
       month: "long",
     });
 
-    this.UI.monthTitle.innerText = `${monthName} ${this.year}`;
+    this.CalendarUI.monthTitle.innerText = `${monthName} ${this.year}`;
 
     Animate.decryptionAnimation(
-      this.UI.monthTitle,
+      this.CalendarUI.monthTitle,
       `${monthName} ${this.year}`,
     );
   }
@@ -169,7 +169,7 @@ export class Calendar {
     this.displayDate.setMonth(this.displayDate.getMonth() + 1);
     this.updateMonthYear();
 
-    setTimeout(() => this.UI.render(), 200);
+    setTimeout(() => this.CalendarUI.render(), 200);
   }
 
   async prevMonth() {
@@ -177,6 +177,6 @@ export class Calendar {
     this.displayDate.setMonth(this.displayDate.getMonth() - 1);
     this.updateMonthYear();
 
-    setTimeout(() => this.UI.render(), 200);
+    setTimeout(() => this.CalendarUI.render(), 200);
   }
 }

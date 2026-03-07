@@ -1,7 +1,7 @@
 import { Animate } from "./Animate";
 import { Calendar } from "./Calendar";
 
-export class UI {
+export class CalendarUI {
   monthTitle: HTMLHeadingElement;
   calendarDays: HTMLElement;
   prevBtn: HTMLButtonElement;
