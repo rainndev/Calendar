@@ -10,6 +10,8 @@ export class Calendar {
   UI: UI;
   year: number;
   month: number;
+  holdTimer: number | undefined;
+  isTooltipVisible: boolean = false;
 
   constructor() {
     this.currentDate = new Date();
@@ -17,6 +19,8 @@ export class Calendar {
     this.displayDate = new Date();
     this.year = this.displayDate.getFullYear();
     this.month = this.displayDate.getMonth();
+    this.holdTimer = undefined;
+    this.isTooltipVisible = false;
   }
 
   getCurrentTime(): string {
@@ -42,53 +46,63 @@ export class Calendar {
     document.body.appendChild(tooltip);
 
     // show tooltip on hover
-    day.addEventListener("mouseenter", () => {
-      const rect = day.getBoundingClientRect();
-      const tooltipRect = tooltip.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
+    day.addEventListener("mousedown", () => {
+      this.holdTimer = setTimeout(() => {
+        const rect = day.getBoundingClientRect();
+        const tooltipRect = tooltip.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
 
-      // Horizontal position: center but clamp within viewport
-      let left = rect.left + rect.width / 2 - tooltipRect.width / 2;
-      left = Math.max(5, Math.min(left, viewportWidth - tooltipRect.width - 5)); // 5px padding
+        // Horizontal position: center but clamp within viewport
+        let left = rect.left + rect.width / 2 - tooltipRect.width / 2;
+        left = Math.max(
+          5,
+          Math.min(left, viewportWidth - tooltipRect.width - 5),
+        ); // 5px padding
 
-      // Vertical position: prefer above, if not enough space, show below
-      let top = rect.top - tooltipRect.height - 10; // 10px gap
-      if (top < 5) {
-        top = rect.bottom + 10; // show below the day
-      }
+        // Vertical position: prefer above, if not enough space, show below
+        let top = rect.top - tooltipRect.height - 10; // 10px gap
+        if (top < 5) {
+          top = rect.bottom + 10; // show below the day
+        }
 
-      tooltip.style.left = `${left}px`;
-      tooltip.style.top = `${top}px`;
+        tooltip.style.left = `${left}px`;
+        tooltip.style.top = `${top}px`;
 
-      animate(
-        tooltip,
-        {
-          opacity: [0, 1],
-          scale: [0.8, 1],
-          y: [-10, 0],
-        },
-        {
-          type: "spring",
-          stiffness: 300,
-          damping: 20,
-          duration: 0.3,
-        },
-      );
+        animate(
+          tooltip,
+          {
+            opacity: [0, 1],
+            scale: [0.8, 1],
+            y: [-10, 0],
+          },
+          {
+            type: "spring",
+            stiffness: 300,
+            damping: 20,
+            duration: 0.3,
+          },
+        );
+
+        this.isTooltipVisible = true;
+      }, 500);
     });
 
-    // hide tooltip when leaving
-    day.addEventListener("mouseleave", () => {
-      animate(
-        tooltip,
-        {
-          opacity: [1, 0],
-          scale: [1, 0.8],
-          y: [0, -10],
-        },
-        {
-          duration: 0.2,
-        },
-      );
+    day.addEventListener("mouseup", () => {
+      if (this.holdTimer) clearTimeout(this.holdTimer);
+
+      if (this.isTooltipVisible) {
+        animate(
+          tooltip,
+          {
+            opacity: [1, 0],
+            scale: [1, 0.8],
+            y: [0, -10],
+          },
+          { duration: 0.2 },
+        );
+      }
+
+      this.isTooltipVisible = false;
     });
   }
 
