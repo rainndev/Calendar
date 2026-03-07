@@ -50,7 +50,7 @@ export class WeatherUI {
         hour12: true,
       });
 
-      li.innerText = `${time} - ${entry.temperature}°C`;
+      li.innerText = `${time} - ${entry.temperature.toFixed(2)}°C`;
       this.hourlyForecastElement.appendChild(li);
     });
   }
