@@ -2,7 +2,7 @@ import { animate } from "motion";
 import holidayData from "../data/holidays.json";
 import type { HolidayType } from "../types/holiday.types";
 import { Animate } from "./Animate";
-import { UI } from "./UI";
+import { UI } from "./CalendarUI";
 
 export class Calendar {
   currentDate: Date;
