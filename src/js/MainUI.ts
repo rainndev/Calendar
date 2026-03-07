@@ -41,5 +41,6 @@ export class MainUI {
 
   render() {
     this.Calendar.CalendarUI.render();
+    this.calendarTabBtn.classList.add("active-tab");
   }
 }
