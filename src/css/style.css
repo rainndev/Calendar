@@ -5,9 +5,12 @@
   --gray-color: oklch(0.22 0.05 280/0.5);
   --black-color: oklch(0.22 0.05 280/0.5);
   --accent-color: oklch(0.978 0.058 102.16);
+  --cursor-url: url("/cursor/custom-cursor.png"), auto;
+  --cursor-click-url: url("/cursor/cursor-click.png"), auto;
 }
 
 body {
+  cursor: var(--cursor-url);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
@@ -16,6 +19,18 @@ body {
   height: 100%;
   height: 100vh;
   margin: 0;
+}
+
+button:hover,
+a:hover,
+.day:hover {
+  cursor: var(--cursor-url);
+}
+
+button:active,
+a:active,
+.day:active {
+  cursor: var(--cursor-click-url);
 }
 
 .container {
@@ -53,7 +68,6 @@ body {
 .calendar-header button {
   background: rgba(255, 255, 255, 0.2);
   padding: 5px 12px;
-  cursor: pointer;
   font-size: 1.5rem;
 }
 
