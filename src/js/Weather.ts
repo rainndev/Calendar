@@ -1,8 +1,10 @@
 import { WeatherUI } from "./WeatherUI";
 type CurrentWeather = {
-  temperature: number;
-  windspeed: number;
-  weathercode: number;
+  temperature_2m: number;
+  wind_speed_10m: number;
+  weather_code: number;
+  apparent_temperature: number;
+  relative_humidity_2m: number;
   time: string;
 };
 
@@ -29,7 +31,7 @@ export class Weather {
       `https://api.open-meteo.com/v1/forecast` +
       `?latitude=${this.latitude}` +
       `&longitude=${this.longitude}` +
-      `&current_weather=true` +
+      `&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m` +
       `&hourly=temperature_2m` +
       `&start_date=${today}` +
       `&end_date=${today}`;
@@ -43,8 +45,8 @@ export class Weather {
     const data = await response.json();
 
     return {
-      current: data.current_weather as CurrentWeather,
-      hourly: data.hourly as HourlyForecast,
+      current: data.current as CurrentWeather | undefined,
+      hourly: data.hourly as HourlyForecast | undefined,
     };
   }
 

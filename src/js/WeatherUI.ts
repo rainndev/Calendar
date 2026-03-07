@@ -7,6 +7,8 @@ export class WeatherUI {
   weatherCodeElement: HTMLParagraphElement;
   hourlyForecastElement: HTMLUListElement;
   weatherIconElement: HTMLImageElement;
+  humidityElement: HTMLParagraphElement;
+  feelsLikeElement: HTMLParagraphElement;
 
   constructor(weatherService: Weather) {
     this.weather = weatherService;
@@ -18,19 +20,23 @@ export class WeatherUI {
     this.weatherCodeElement = $("weather-code");
     this.hourlyForecastElement = $("hourly-forecast");
     this.weatherIconElement = $("weather-icon");
+    this.humidityElement = $("humidity");
+    this.feelsLikeElement = $("feels-like");
   }
 
   async render() {
     const weather = await this.weather.getWeather();
-    this.currentTempElement.innerText = `Summary Weather: ${weather.current.temperature}°C`;
-    this.windSpeedElement.innerText = `Wind Speed: ${weather.current.windspeed} km/h`;
-    this.weatherCodeElement.innerText = `Weather Code: ${weather.current.weathercode}`;
+
+    this.currentTempElement.innerText = `Summary Weather: ${weather.current?.temperature_2m}°C`;
+    this.windSpeedElement.innerText = `Wind Speed: ${weather.current?.wind_speed_10m} km/h`;
+    this.humidityElement.innerText = `Humidity: ${weather.current?.relative_humidity_2m}%`;
+    this.feelsLikeElement.innerText = `Feels Like: ${weather.current?.apparent_temperature}°C`;
 
     this.weatherIconElement.src = this.weather.getWeatherIcon(
-      weather.current.weathercode,
+      weather.current?.weather_code || 0,
     );
 
-    const hourlyForecast = this.weather.getTodayHourlyForecast(weather.hourly);
+    const hourlyForecast = this.weather.getTodayHourlyForecast(weather.hourly!);
 
     // Clear previous forecast
     this.hourlyForecastElement.innerHTML = "";
