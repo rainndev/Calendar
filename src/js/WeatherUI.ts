@@ -95,8 +95,13 @@ export class WeatherUI {
           ${timeSVG}
           <p>${time}</p>
         </div>
-    
-        <p>${entry.temperature.toFixed(2)}°C</p>
+
+        <div style="display: flex; align-items: center; gap: 0.5rem">
+          <img src="${this.weather.getWeatherIcon(
+            weather.hourly?.weather_code[hourlyForecast.indexOf(entry)] || 0,
+          )}" alt="Weather Icon" width="45" height="45">
+          <p>${entry.temperature.toFixed(2)}°C</p>
+        </div>
       `;
       li.classList.add("hourly-entry");
       this.hourlyForecastElement.appendChild(li);

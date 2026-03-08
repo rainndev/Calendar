@@ -11,6 +11,7 @@ type CurrentWeather = {
 type HourlyForecast = {
   time: string[];
   temperature_2m: number[];
+  weather_code: number[];
 };
 
 export class Weather {
@@ -32,7 +33,7 @@ export class Weather {
       `?latitude=${this.latitude}` +
       `&longitude=${this.longitude}` +
       `&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m` +
-      `&hourly=temperature_2m` +
+      `&hourly=temperature_2m,weather_code` +
       `&start_date=${today}` +
       `&end_date=${today}`;
 
