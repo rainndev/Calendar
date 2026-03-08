@@ -1,9 +1,5 @@
-import Typed from "typed.js";
 import { Animate } from "./Animate";
 import { Weather } from "./Weather";
-
-const timeSVG =
-  '<svg xmlns="http://www.w3.org/2000/svg" width="35px"  viewBox="0 0 24 24"><title xmlns="">clock</title><path fill="oklch(0.22 0.05 280/0.9)" d="M19 3H5v2H3v14h2v2h14v-2h2V5h-2zm0 2v14H5V5zm-8 2h2v6h4v2h-6z"/></svg>';
 
 export class WeatherUI {
   weather: Weather;
@@ -16,7 +12,6 @@ export class WeatherUI {
   feelsLikeElement: HTMLParagraphElement;
   locationTitleElement: HTMLHeadingElement;
   monthTitleElement: HTMLHeadingElement;
-  speechContentElement: HTMLParagraphElement;
 
   constructor(weatherService: Weather) {
     this.weather = weatherService;
@@ -32,23 +27,6 @@ export class WeatherUI {
     this.feelsLikeElement = $("feels-like");
     this.locationTitleElement = $("location-title");
     this.monthTitleElement = $("month-title-weather");
-    this.speechContentElement = $("speech-content");
-
-    const message = [
-      `Hello User! ${weatherService.getGreetingsBasedOnTime()}`,
-      "Click on the tabs to explore features!",
-      "You can also hold on calendar days to see holiday details!",
-      "Weather data is fetched from Open-Meteo API!",
-      "This project was built with TypeScript and Motion by Rainier Sison.",
-    ];
-
-    new Typed(this.speechContentElement, {
-      strings: message,
-      typeSpeed: 45,
-      backSpeed: 45,
-      loop: true,
-      cursorChar: "|",
-    });
   }
 
   showMonthTitle() {
@@ -111,7 +89,7 @@ export class WeatherUI {
 
       li.innerHTML = `
         <div style="display: flex; align-items: center; gap: 0.5rem">
-          ${timeSVG}
+          <img src="./public/time-icon.svg" alt="Time Icon" />
           <p>${time}</p>
         </div>
 
