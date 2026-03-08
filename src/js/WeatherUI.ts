@@ -99,7 +99,7 @@ export class WeatherUI {
         <div style="display: flex; align-items: center; gap: 0.5rem">
           <img src="${this.weather.getWeatherIcon(
             weather.hourly?.weather_code[hourlyForecast.indexOf(entry)] || 0,
-          )}" alt="Weather Icon" width="35" height="35">
+          )}" alt="Weather Icon" width="35" height="35" class="bounce-img"/>
           <p>${entry.temperature.toFixed(2)}°C</p>
         </div>
       `;

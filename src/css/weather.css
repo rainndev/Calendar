@@ -41,6 +41,14 @@
   box-shadow: 12px 12px 0px 0px var(--text-color);
 }
 
+.weather-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
 .weather-box {
   width: 100%;
 }
@@ -61,4 +69,19 @@
 #hourly-forecast {
   max-height: 500px;
   overflow-y: auto;
+}
+
+.bounce-img {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }

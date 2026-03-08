@@ -98,8 +98,9 @@
               id="weather-icon"
               width="150px"
               style="object-fit: fill"
-              src="./public/weather-icons/icon-drizzle.webp"
-              alt=""
+              src="./public/weather-icons/icon-snow.png"
+              class="bounce-img"
+              alt="summary-weather-icon"
             />
 
             <h1 id="current-temp">00.00°C</h1>
@@ -107,32 +108,22 @@
         </div>
 
         <div class="weather-body">
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              gap: 2rem;
-              margin-bottom: 1rem;
-            "
-          >
+          <div class="weather-details">
             <div class="weather-box">
-              <h2 id="wind-speed">2.2km/h</h2>
+              <h2 id="wind-speed">10km/h</h2>
               <p>Wind Speed</p>
             </div>
             <div class="weather-box">
-              <h2 id="humidity">79</h2>
+              <h2 id="humidity">79%</h2>
               <p>Humidity</p>
             </div>
             <div class="weather-box">
-              <h2 id="feels-like">31.6</h2>
+              <h2 id="feels-like">30°C</h2>
               <p>Feels like</p>
             </div>
           </div>
 
-          <h2 style="margin-top: 3rem; padding: 10px; text-align: center">
-            Hourly Forecast
-          </h2>
+          <h2 style="margin-top: 3rem; text-align: center">Hourly Forecast</h2>
           <ul id="hourly-forecast"></ul>
         </div>
       </div>
