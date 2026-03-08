@@ -14,6 +14,7 @@ export class WeatherUI {
   humidityElement: HTMLParagraphElement;
   feelsLikeElement: HTMLParagraphElement;
   locationTitleElement: HTMLHeadingElement;
+  monthTitleElement: HTMLHeadingElement;
 
   constructor(weatherService: Weather) {
     this.weather = weatherService;
@@ -28,6 +29,18 @@ export class WeatherUI {
     this.humidityElement = $("humidity");
     this.feelsLikeElement = $("feels-like");
     this.locationTitleElement = $("location-title");
+    this.monthTitleElement = $("month-title-weather");
+  }
+
+  showMonthTitle() {
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const month = currentDate.toLocaleString("default", { month: "long" });
+    const year = currentDate.getFullYear();
+    Animate.decryptionAnimation(
+      this.monthTitleElement,
+      `${month} ${day} ${year}`,
+    );
   }
 
   async render() {
@@ -36,7 +49,10 @@ export class WeatherUI {
       "Pampanga, Philippines",
     );
 
+    this.showMonthTitle();
     const weather = await this.weather.getWeather();
+
+    console.log("Current Weather:", weather.hourly);
     Animate.decryptionAnimation(
       this.currentTempElement,
       `${weather.current?.temperature_2m.toFixed(2)}°C`,
