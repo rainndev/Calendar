@@ -22,6 +22,7 @@ export class MainUI {
   weatherElement: HTMLElement;
   speechContentElement: HTMLParagraphElement;
   soundButtonElement: HTMLButtonElement;
+  soundIconElement: HTMLImageElement;
 
   constructor() {
     const $ = <T extends HTMLElement>(id: string) =>
@@ -34,6 +35,7 @@ export class MainUI {
     this.weatherElement = $("weather-element");
     this.speechContentElement = $("speech-content");
     this.soundButtonElement = $("sound-effect-button");
+    this.soundIconElement = $("sound-icon") as HTMLImageElement;
     this.Weather = new Weather(15.0343, 120.6844);
 
     // Tab switching
@@ -64,9 +66,11 @@ export class MainUI {
         bgMusic.play();
       }
 
-      this.soundButtonElement.innerHTML = typingSound.muted
-        ? `<img src="./sound-mute-solid.svg" alt="Sound Off"/>`
-        : `<img src="./sound-on-solid.svg" alt="Sound ON"/>`;
+      this.soundIconElement.src = typingSound.muted
+        ? "./sound-mute-solid.svg"
+        : "./sound-on-solid.svg";
+
+      this.soundIconElement.alt = typingSound.muted ? "Sound Off" : "Sound On";
     });
 
     const message = [
