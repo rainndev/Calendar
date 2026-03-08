@@ -186,3 +186,22 @@ a:active,
   border-right: 8px solid transparent;
   border-top: 8px solid var(--bg-color);
 }
+
+#sound-effect-button {
+  color: white;
+  position: absolute;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  border-radius: 100%;
+  border: 2px solid var(--text-color);
+  box-shadow: 4px 4px 0px 0px var(--text-color);
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  transition: all 0.2s;
+}
+
+#sound-effect-button:active {
+  transform: translateX(4px) translateY(4px);
+  box-shadow: none;
+}

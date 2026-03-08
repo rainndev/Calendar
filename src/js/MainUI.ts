@@ -1,5 +1,18 @@
+import Typed from "typed.js";
+import { getGreetingsBasedOnTime } from "../utils/greetings";
 import { Calendar } from "./Calendar";
 import { Weather } from "./Weather";
+
+const typingSound = new Audio("./public/sounds/keyboard-sound-effect.mp3");
+typingSound.muted = true;
+typingSound.volume = 0.8;
+
+const bgMusic = new Audio("./public/sounds/bg-music.mp3");
+bgMusic.loop = true;
+bgMusic.muted = true;
+bgMusic.volume = 0.3;
+bgMusic.play();
+
 export class MainUI {
   Calendar: Calendar;
   Weather: Weather;
@@ -7,6 +20,8 @@ export class MainUI {
   weatherTabBtn: HTMLButtonElement;
   calendarElement: HTMLElement;
   weatherElement: HTMLElement;
+  speechContentElement: HTMLParagraphElement;
+  soundButtonElement: HTMLButtonElement;
 
   constructor() {
     const $ = <T extends HTMLElement>(id: string) =>
@@ -17,6 +32,8 @@ export class MainUI {
     this.weatherTabBtn = $("weather-tab-btn");
     this.calendarElement = $("calendar-element");
     this.weatherElement = $("weather-element");
+    this.speechContentElement = $("speech-content");
+    this.soundButtonElement = $("sound-effect-button");
     this.Weather = new Weather(15.0343, 120.6844);
 
     // Tab switching
@@ -36,6 +53,46 @@ export class MainUI {
       this.calendarTabBtn.classList.remove("active-tab");
       switchTab(this.weatherElement, this.calendarElement);
       this.Weather.WeatherUI.render();
+    });
+
+    this.soundButtonElement.addEventListener("click", () => {
+      typingSound.muted = !typingSound.muted;
+
+      bgMusic.muted = !bgMusic.muted;
+
+      if (!bgMusic.muted && bgMusic.paused) {
+        bgMusic.play();
+      }
+
+      this.soundButtonElement.innerHTML = typingSound.muted
+        ? `<img src="./public/sound-mute-solid.svg" alt="Sound Off"/>`
+        : `<img src="./public/sound-on-solid.svg" alt="Sound ON"/>`;
+    });
+
+    const message = [
+      `Hello User! ${getGreetingsBasedOnTime()}`,
+      "Click on the tabs to explore features!",
+      "You can also hold on calendar days to see holiday details!",
+      "Weather data is fetched from Open-Meteo API!",
+      "This project was built with TypeScript and Motion by Rainier Sison.",
+    ];
+
+    new Typed(this.speechContentElement, {
+      strings: message,
+      typeSpeed: 45,
+      backSpeed: 45,
+      loop: true,
+      cursorChar: "|",
+
+      onStringTyped: () => {
+        typingSound.pause();
+        typingSound.currentTime = 0;
+      },
+
+      preStringTyped: () => {
+        typingSound.loop = true;
+        typingSound.play();
+      },
     });
   }
 
