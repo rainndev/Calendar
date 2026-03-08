@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style></style>
+    <title>Simple JS Calendar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/Calendar/assets/index-C4A7sTtr.js"></script>
+    <link rel="stylesheet" crossorigin href="/Calendar/assets/index-Hut8AomL.css">
+  </head>
+  <body class="press-start-2p-regular grid-bg">
+    <button id="sound-effect-button">
+      <img src="../sound-mute-solid.svg" alt="Sound Off" />
+    </button>
+    <div class="container">
+      <div class="tabs-container">
+        <div>
+          <button id="calendar-tab-btn" class="tabs">Calendar</button>
+          <button id="weather-tab-btn" class="tabs">Weather</button>
+        </div>
+        <div class="speech-bubble">
+          <p id="speech-content"></p>
+        </div>
+        <img src="../welcome-wave-half.png" alt="welcome-img" />
+      </div>
+
+      <div id="calendar-element" class="calendar-container">
+        <div class="calendar-header">
+          <div>
+            <div style="display: flex; align-items: center; gap: 1rem">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40px"
+                viewBox="0 0 24 24"
+              >
+                <title xmlns="">calendar-month</title>
+                <path
+                  fill="currentColor"
+                  d="M15 2h2v2h4v18H3V4h4V2h2v2h6zM9 6H5v2h14V6zm-4 4v10h14V10zm2 2h2v2H7zm6 0h-2v2h2zm2 0h2v2h-2zm-6 4H7v2h2zm2 0h2v2h-2zm6 0h-2v2h2z"
+                />
+              </svg>
+              <h2 id="monthTitle">Month Year</h2>
+            </div>
+
+            <div class="gap-line"></div>
+            <p id="time">Time: 00:00:00 PM</p>
+          </div>
+
+          <div>
+            <button id="prevMonth" class="buttons">&lt;</button>
+            <button id="nextMonth" class="buttons">&gt;</button>
+          </div>
+        </div>
+
+        <div class="calendar-body">
+          <div class="grid">
+            <div class="day-name">Sun</div>
+            <div class="day-name">Mon</div>
+            <div class="day-name">Tue</div>
+            <div class="day-name">Wed</div>
+            <div class="day-name">Thu</div>
+            <div class="day-name">Fri</div>
+            <div class="day-name">Sat</div>
+          </div>
+
+          <div id="calendarDays" class="grid" style="padding-top: 0"></div>
+        </div>
+      </div>
+
+      <div id="weather-element" class="weather-container">
+        <div class="weather-header">
+          <div>
+            <div style="display: flex; align-items: center; gap: 1rem">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40px"
+                viewBox="0 0 24 24"
+              >
+                <title xmlns="">label</title>
+                <path
+                  fill="currentColor"
+                  d="M12 2H2v10h2v2h2v2h2v2h2v2h2v2h2v-2h2v-2h2v-2h2v-2h2v-2h-2v-2h-2V8h-2V6h-2V4h-2zm0 2v2h2v2h2v2h2v2h2v2h-2v2h-2v2h-2v2h-2v-2h-2v-2H8v-2H6v-2H4V4zM6 6h2v2H6z"
+                />
+              </svg>
+              <h2 id="location-title">Location Loading...</h2>
+            </div>
+
+            <div class="gap-line"></div>
+            <p id="month-title-weather">March 7 2026</p>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; flex-direction: column"
+          >
+            <img
+              id="weather-icon"
+              width="150px"
+              style="object-fit: fill"
+              src="../weather-icons/icon-snow.png"
+              class="bounce-img"
+              alt="summary-weather-icon"
+            />
+
+            <h1 id="current-temp">00.00°C</h1>
+          </div>
+        </div>
+
+        <div class="weather-body">
+          <div class="weather-details">
+            <div class="weather-box">
+              <h2 id="wind-speed">10km/h</h2>
+              <p>Wind Speed</p>
+            </div>
+            <div class="weather-box">
+              <h2 id="humidity">79%</h2>
+              <p>Humidity</p>
+            </div>
+            <div class="weather-box">
+              <h2 id="feels-like">30°C</h2>
+              <p>Feels like</p>
+            </div>
+          </div>
+
+          <div class="hourly-header-container">
+            <h2 style="width: fit-content" class="hourly-forecast-header">
+              Hourly Forecast
+            </h2>
+            <p>Scroll down to see the hourly forecast for the next 24 hours.</p>
+          </div>
+
+          <div></div>
+          <ul id="hourly-forecast">
+            <p class="loading-dots">Loading</p>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
