@@ -30,11 +30,17 @@
         <div class="calendar-header">
           <div>
             <div style="display: flex; align-items: center; gap: 1rem">
-              <img
-                src="./public/calendar-icon.svg"
-                alt="time-icon"
-                style="height: 40px"
-              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40px"
+                viewBox="0 0 24 24"
+              >
+                <title xmlns="">calendar-month</title>
+                <path
+                  fill="currentColor"
+                  d="M15 2h2v2h4v18H3V4h4V2h2v2h6zM9 6H5v2h14V6zm-4 4v10h14V10zm2 2h2v2H7zm6 0h-2v2h2zm2 0h2v2h-2zm-6 4H7v2h2zm2 0h2v2h-2zm6 0h-2v2h2z"
+                />
+              </svg>
               <h2 id="monthTitle">Month Year</h2>
             </div>
 
@@ -67,16 +73,22 @@
         <div class="weather-header">
           <div>
             <div style="display: flex; align-items: center; gap: 1rem">
-              <img
-                src="./public/calendar-icon.svg"
-                alt="time-icon"
-                style="height: 40px"
-              />
-              <h2 id="monthTitle">March 7 2026</h2>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40px"
+                viewBox="0 0 24 24"
+              >
+                <title xmlns="">label</title>
+                <path
+                  fill="currentColor"
+                  d="M12 2H2v10h2v2h2v2h2v2h2v2h2v2h2v-2h2v-2h2v-2h2v-2h2v-2h-2v-2h-2V8h-2V6h-2V4h-2zm0 2v2h2v2h2v2h2v2h2v2h-2v2h-2v2h-2v2h-2v-2h-2v-2H8v-2H6v-2H4V4zM6 6h2v2H6z"
+                />
+              </svg>
+              <h2 id="location-title">Location Loading...</h2>
             </div>
 
             <div class="gap-line"></div>
-            <p id="time">Time: 00:00:00 PM</p>
+            <p id="monthTitle">March 7 2026</p>
           </div>
 
           <div
@@ -90,14 +102,37 @@
               alt=""
             />
 
-            <h1 id="current-temp">21.23</h1>
+            <h1 id="current-temp">00.00°C</h1>
           </div>
         </div>
 
         <div class="weather-body">
-          <p id="wind-speed">Wind Speed Temperature: 2.2km/h</p>
-          <p id="humidity">Humidity: 79</p>
-          <p id="feels-like">Feels like: 31.6</p>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 2rem;
+              margin-bottom: 1rem;
+            "
+          >
+            <div class="weather-box">
+              <h2 id="wind-speed">2.2km/h</h2>
+              <p>Wind Speed</p>
+            </div>
+            <div class="weather-box">
+              <h2 id="humidity">79</h2>
+              <p>Humidity</p>
+            </div>
+            <div class="weather-box">
+              <h2 id="feels-like">31.6</h2>
+              <p>Feels like</p>
+            </div>
+          </div>
+
+          <h2 style="margin-top: 3rem; padding: 10px; text-align: center">
+            Hourly Forecast
+          </h2>
           <ul id="hourly-forecast"></ul>
         </div>
       </div>

@@ -32,10 +32,29 @@
   background: rgba(255, 255, 255, 0.4);
 }
 
-.weather-body {
+.weather-box,
+#hourly-forecast {
   padding: 2rem;
   border-radius: 1rem;
   border: 5px solid var(--text-color);
   background-color: var(--bg-color);
   box-shadow: 12px 12px 0px 0px var(--text-color);
+}
+
+.weather-box {
+  width: 100%;
+}
+
+.hourly-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--text-color);
+  list-style: none;
+}
+
+#hourly-forecast {
+  max-height: 500px;
+  overflow-y: auto;
 }

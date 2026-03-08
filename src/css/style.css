@@ -9,6 +9,30 @@
   --cursor-click-url: url("/cursor/cursor-click.png"), auto;
 }
 
+/* scrollbar width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* scrollbar track */
+::-webkit-scrollbar-track {
+  background: var(--accent-color);
+  border: 3px solid var(--text-color);
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border: 2px solid var(--text-color);
+}
+
+/* hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
 body {
   cursor: var(--cursor-url);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
