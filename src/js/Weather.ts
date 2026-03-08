@@ -68,41 +68,41 @@ export class Weather {
     switch (true) {
       // Clear sky
       case weatherCode === 0:
-        return "./public/weather-icons/icon-sunny.webp";
+        return "./public/weather-icons/icon-sunny.png";
 
       // Partly cloudy
       case [1, 2].includes(weatherCode):
-        return "./public/weather-icons/icon-partly-cloudy.webp";
+        return "./public/weather-icons/icon-partly-cloudy.png";
 
       // Overcast
       case weatherCode === 3:
-        return "./public/weather-icons/icon-overcast.webp";
+        return "./public/weather-icons/icon-overcast.png";
 
       // Fog
       case [45, 48].includes(weatherCode):
-        return "./public/weather-icons/icon-fog.webp";
+        return "./public/weather-icons/icon-fog.png";
 
       // Drizzle (51–55)
       case weatherCode >= 51 && weatherCode <= 55:
-        return "./public/weather-icons/icon-drizzle.webp";
+        return "./public/weather-icons/icon-drizzle.png";
 
       // Rain (61–65, 80–82)
       case (weatherCode >= 61 && weatherCode <= 65) ||
         (weatherCode >= 80 && weatherCode <= 82):
-        return "./public/weather-icons/icon-rain.webp";
+        return "./public/weather-icons/icon-rain.png";
 
       // Snow (71–77, 85–86)
       case (weatherCode >= 71 && weatherCode <= 77) ||
         (weatherCode >= 85 && weatherCode <= 86):
-        return "./public/weather-icons/icon-snow.webp";
+        return "./public/weather-icons/icon-snow.png";
 
       // Thunderstorms (95–99)
       case weatherCode >= 95 && weatherCode <= 99:
-        return "./public/weather-icons/icon-storm.webp";
+        return "./public/weather-icons/icon-storm.png";
 
       // Default / unknown
       default:
-        return "./public/weather-icons/icon-overcast.webp";
+        return "./public/weather-icons/icon-overcast.png";
     }
   }
 }
