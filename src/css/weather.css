@@ -62,13 +62,36 @@
   list-style: none;
 }
 
+.hourly-entry:last-child {
+  border-bottom: none;
+}
+
 .weather-box p {
   color: oklch(0.22 0.05 280/0.9);
 }
 
 #hourly-forecast {
-  max-height: 500px;
+  height: 500px;
   overflow-y: auto;
+}
+
+.hourly-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0rem 0.5rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.hourly-forecast-header {
+  margin-top: 4rem;
+  padding: 15px;
+  background-color: var(--text-color);
+  color: var(--accent-color);
+  border: 5px solid var(--text-color);
+  border-bottom: none;
 }
 
 .bounce-img {
@@ -83,5 +106,28 @@
 
   50% {
     transform: translateY(-10px);
+  }
+}
+
+.loading-dots::after {
+  content: "";
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
+  100% {
+    content: "";
   }
 }
