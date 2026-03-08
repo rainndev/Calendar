@@ -89,7 +89,7 @@ export class WeatherUI {
 
       li.innerHTML = `
         <div style="display: flex; align-items: center; gap: 0.5rem">
-          <img src="../time-icon.svg" alt="Time Icon" />
+          <img src="./time-icon.svg" alt="Time Icon" />
           <p>${time}</p>
         </div>
 

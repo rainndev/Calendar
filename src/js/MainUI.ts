@@ -3,11 +3,11 @@ import { getGreetingsBasedOnTime } from "../utils/greetings";
 import { Calendar } from "./Calendar";
 import { Weather } from "./Weather";
 
-const typingSound = new Audio("../sounds/keyboard-sound-effect.mp3");
+const typingSound = new Audio("./sounds/keyboard-sound-effect.mp3");
 typingSound.muted = true;
 typingSound.volume = 1;
 
-const bgMusic = new Audio("../sounds/bg-music.mp3");
+const bgMusic = new Audio("./sounds/bg-music.mp3");
 bgMusic.loop = true;
 bgMusic.muted = true;
 bgMusic.volume = 0.15;
@@ -65,8 +65,8 @@ export class MainUI {
       }
 
       this.soundButtonElement.innerHTML = typingSound.muted
-        ? `<img src="../sound-mute-solid.svg" alt="Sound Off"/>`
-        : `<img src="../sound-on-solid.svg" alt="Sound ON"/>`;
+        ? `<img src="./sound-mute-solid.svg" alt="Sound Off"/>`
+        : `<img src="./sound-on-solid.svg" alt="Sound ON"/>`;
     });
 
     const message = [
