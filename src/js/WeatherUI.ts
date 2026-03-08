@@ -39,11 +39,22 @@ export class WeatherUI {
     const weather = await this.weather.getWeather();
     Animate.decryptionAnimation(
       this.currentTempElement,
-      `${weather.current?.temperature_2m}°C`,
+      `${weather.current?.temperature_2m.toFixed(2)}°C`,
     );
-    this.windSpeedElement.innerText = `${weather.current?.wind_speed_10m} km/h`;
-    this.humidityElement.innerText = `${weather.current?.relative_humidity_2m}%`;
-    this.feelsLikeElement.innerText = `${weather.current?.apparent_temperature}°C`;
+    Animate.decryptionAnimation(
+      this.windSpeedElement,
+      `${weather.current?.wind_speed_10m.toFixed(0)} km/h`,
+    );
+
+    Animate.decryptionAnimation(
+      this.humidityElement,
+      `${weather.current?.relative_humidity_2m.toFixed(0)}%`,
+    );
+
+    Animate.decryptionAnimation(
+      this.feelsLikeElement,
+      `${weather.current?.apparent_temperature.toFixed(0)}°C`,
+    );
 
     this.weatherIconElement.src = this.weather.getWeatherIcon(
       weather.current?.weather_code || 0,
@@ -74,5 +85,7 @@ export class WeatherUI {
       li.classList.add("hourly-entry");
       this.hourlyForecastElement.appendChild(li);
     });
+
+    Animate.animateListStagger(".hourly-entry");
   }
 }

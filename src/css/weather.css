@@ -54,6 +54,10 @@
   list-style: none;
 }
 
+.weather-box p {
+  color: oklch(0.22 0.05 280/0.9);
+}
+
 #hourly-forecast {
   max-height: 500px;
   overflow-y: auto;
