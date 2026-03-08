@@ -17,7 +17,7 @@ export class MainUI {
     this.weatherTabBtn = $("weather-tab-btn");
     this.calendarElement = $("calendar-element");
     this.weatherElement = $("weather-element");
-    this.Weather = new Weather(5.079409, 120.6199895);
+    this.Weather = new Weather(15.0343, 120.6844);
 
     // Tab switching
     const switchTab = (show: HTMLElement, hide: HTMLElement) => {
