@@ -1,5 +1,6 @@
 import { animate } from "motion";
 import holidayData from "../data/holidays.json";
+import type { DailyChallenge } from "../types/daily-challenge.type";
 import type { HolidayType } from "../types/holiday.types";
 import { Animate } from "./Animate";
 import { CalendarUI } from "./CalendarUI";
@@ -12,6 +13,7 @@ export class Calendar {
   month: number;
   holdTimer: number | undefined;
   isTooltipVisible: boolean = false;
+  dailyChallengeData: DailyChallenge[];
 
   constructor() {
     this.currentDate = new Date();
@@ -21,6 +23,9 @@ export class Calendar {
     this.month = this.displayDate.getMonth();
     this.holdTimer = undefined;
     this.isTooltipVisible = false;
+    this.dailyChallengeData = localStorage.getItem("dailyChallenge")
+      ? JSON.parse(localStorage.getItem("dailyChallenge")!)
+      : ([] as DailyChallenge[]);
   }
 
   getCurrentTime(): string {
@@ -122,17 +127,35 @@ export class Calendar {
     for (let i = 1; i <= daysInMonth; i++) {
       const day = document.createElement("div");
       day.classList.add("day");
+
+      // Set the day number first
+      day.innerText = i.toString();
+
+      // Check for holidays
       holidayData.forEach((holiday: HolidayType) => {
         const [hMonth, hDay] = holiday.date.split("-").map(Number);
-
         if (hDay === i && hMonth === this.month + 1) {
           day.classList.add("holiday");
           this.showToolTipHoliday(day, holiday);
         }
       });
 
-      day.innerText = i.toString();
+      // Check for daily challenge
+      const dayStr = `${this.year}-${(this.month + 1)
+        .toString()
+        .padStart(2, "0")}-${i.toString().padStart(2, "0")}`;
 
+      const hasChallenge = this.dailyChallengeData.some(
+        (challenge) => challenge.date === dayStr && challenge.proofImage,
+      );
+
+      if (hasChallenge) {
+        const indicator = document.createElement("span");
+        indicator.classList.add("challenge-indicator");
+        day.appendChild(indicator); // append AFTER innerText
+      }
+
+      // Highlight today
       if (
         i === this.currentDate.getDate() &&
         this.month === this.currentDate.getMonth() &&
@@ -146,7 +169,6 @@ export class Calendar {
 
     Animate.animateListStagger(".day");
   }
-
   updateMonthYear() {
     this.year = this.displayDate.getFullYear();
     this.month = this.displayDate.getMonth();
@@ -178,5 +200,22 @@ export class Calendar {
     this.updateMonthYear();
 
     setTimeout(() => this.CalendarUI.render(), 200);
+  }
+
+  addDailyChallengeEntry(challenge: string, proofImage?: string) {
+    const dailyChallenge: DailyChallenge[] = localStorage.getItem(
+      "dailyChallenge",
+    )
+      ? JSON.parse(localStorage.getItem("dailyChallenge")!)
+      : ([] as DailyChallenge[]);
+
+    console.log("Adding daily challenge entry:", { challenge, proofImage });
+    dailyChallenge.push({
+      date: new Date().toISOString().split("T")[0],
+      challenge,
+      proofImage,
+    });
+
+    localStorage.setItem("dailyChallenge", JSON.stringify(dailyChallenge));
   }
 }
