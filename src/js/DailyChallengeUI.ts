@@ -65,7 +65,7 @@ export class DailyChallengeUI {
 
       this.input.value = "";
       this.uploadText.textContent = "Upload proof image";
-      this.imageChallengePreview.src = "./public/image-solid.svg";
+      this.imageChallengePreview.src = "./image-solid.svg";
     });
   }
 
