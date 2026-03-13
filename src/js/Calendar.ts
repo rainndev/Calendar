@@ -226,7 +226,7 @@ export class Calendar {
     }
 
     const entry: DailyChallenge = {
-      date: new Date().toISOString().split("T")[0],
+      date: new Date().toISOString(),
       challenge,
       proofImage,
     };
