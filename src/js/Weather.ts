@@ -19,8 +19,8 @@ type HourlyForecast = {
 export class Weather {
   private latitude: number = 15.0343;
   private longitude: number = 120.6844;
-  private city: string = "Unknown";
-  private country: string = "Unknown";
+  private city: string = "Pampanga";
+  private country: string = "Philippines";
   WeatherUI: WeatherUI;
 
   constructor() {
