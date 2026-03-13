@@ -24,7 +24,7 @@ export class DailyChallengeUI {
     this.mainUI = mainUI;
     this.dailyChallengeText = $("daily-challenge-text");
     this.input = $("imageInput");
-    this.uploadText = $("upload-text");
+    this.uploadText = $("upload-image-text");
     this.finishChallengeButton = $("finish-challenge-btn");
     this.recentListUL = $("recent-challenges-list");
     this.noChallengeUI = $("no-challenge-ui");
@@ -39,8 +39,6 @@ export class DailyChallengeUI {
 
       reader.onload = () => {
         this.imageBase64 = reader.result as string;
-
-        console.log("Base64:", this.imageBase64);
       };
 
       reader.readAsDataURL(file);
@@ -52,7 +50,8 @@ export class DailyChallengeUI {
           this.todayChallenge,
           this.imageBase64,
         );
-        this.renderRecentChallenges();
+
+        this.render();
         alert("Challenge completed! Your proof has been saved.");
       } catch (err) {
         if (err instanceof Error) {

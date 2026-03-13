@@ -202,7 +202,7 @@ export class Calendar {
     setTimeout(() => this.CalendarUI.render(), 200);
   }
 
-  addDailyChallengeEntry(challenge: string, proofImage?: string) {
+  addDailyChallengeEntry(challenge: string, proofImage: string) {
     const stored = localStorage.getItem("dailyChallenge");
 
     let dailyChallenge: DailyChallenge[];
@@ -215,6 +215,10 @@ export class Calendar {
 
     if (!challenge || challenge.trim() === "") {
       throw new Error("Challenge cannot be empty");
+    }
+
+    if (proofImage === "") {
+      throw new Error("Proof image cannot be empty");
     }
 
     if (dailyChallenge.some((entry) => entry.challenge === challenge)) {
