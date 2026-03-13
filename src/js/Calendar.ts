@@ -6,6 +6,9 @@ import { getRelativeTime } from "../utils/time";
 import { Animate } from "./Animate";
 import { CalendarUI } from "./CalendarUI";
 
+const showSound = new Audio("./sounds/show-effect.mp3");
+showSound.volume = 0.6;
+
 export class Calendar {
   currentDate: Date;
   displayDate: Date;
@@ -50,6 +53,8 @@ export class Calendar {
     // show tooltip on hover
     day.addEventListener("mousedown", () => {
       this.holdTimer = setTimeout(() => {
+        showSound.currentTime = 0;
+        showSound.play();
         const rect = day.getBoundingClientRect();
         const tooltipRect = tooltip.getBoundingClientRect();
         const viewportWidth = window.innerWidth;
@@ -121,6 +126,9 @@ export class Calendar {
     `;
     document.body.appendChild(tooltip);
     day.addEventListener("mouseenter", () => {
+      showSound.currentTime = 0;
+      showSound.play();
+
       const rect = day.getBoundingClientRect();
       const tooltipRect = tooltip.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
