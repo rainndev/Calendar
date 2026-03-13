@@ -187,7 +187,8 @@ a:active,
   border-top: 8px solid var(--bg-color);
 }
 
-#sound-effect-button {
+#sound-effect-button,
+#bg-music-button {
   color: white;
   position: absolute;
   padding: 1rem;
@@ -195,13 +196,22 @@ a:active,
   border-radius: 100%;
   border: 2px solid var(--text-color);
   box-shadow: 4px 4px 0px 0px var(--text-color);
-  top: 20px;
-  right: 20px;
   z-index: 10;
   transition: all 0.2s;
 }
 
-#sound-effect-button:active {
+#sound-effect-button {
+  top: 20px;
+  right: 20px;
+}
+
+#bg-music-button {
+  top: 20px;
+  right: 90px;
+}
+
+#sound-effect-button:active,
+#bg-music-button:active {
   transform: translateX(4px) translateY(4px);
   box-shadow: none;
 }

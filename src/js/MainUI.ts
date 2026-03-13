@@ -2,19 +2,8 @@ import Typed from "typed.js";
 import { message } from "../data/dialog-messages";
 import { Calendar } from "./Calendar";
 import { DailyChallengeUI } from "./DailyChallengeUI";
+import { SoundEffect } from "./SoundEffect";
 import { Weather } from "./Weather";
-
-const clickSound = new Audio("./sounds/hit-sound-effect.mp3");
-
-const typingSound = new Audio("./sounds/keyboard-sound-effect.mp3");
-typingSound.muted = true;
-typingSound.volume = 1;
-
-const bgMusic = new Audio("./sounds/bg-music.mp3");
-bgMusic.loop = true;
-bgMusic.muted = true;
-bgMusic.volume = 0.15;
-bgMusic.play();
 
 export class MainUI {
   Calendar: Calendar;
@@ -29,6 +18,8 @@ export class MainUI {
   speechContentElement: HTMLParagraphElement;
   soundButtonElement: HTMLButtonElement;
   soundIconElement: HTMLImageElement;
+  musicButtonElement: HTMLButtonElement;
+  musicIconElement: HTMLImageElement;
 
   constructor() {
     const $ = <T extends HTMLElement>(id: string) =>
@@ -42,10 +33,14 @@ export class MainUI {
     this.speechContentElement = $("speech-content");
     this.soundButtonElement = $("sound-effect-button");
     this.soundIconElement = $("sound-icon") as HTMLImageElement;
+    this.musicButtonElement = $("bg-music-button");
+    this.musicIconElement = $("music-icon") as HTMLImageElement;
     this.dailyChallengeElement = $("daily-challenge-element");
     this.dailyChallengeTab = $("daily-tab-btn");
     this.Weather = new Weather();
     this.DailyChallengeUI = new DailyChallengeUI(this);
+
+    SoundEffect.initialize();
 
     const tabs = [
       {
@@ -67,8 +62,7 @@ export class MainUI {
 
     // Tab switching
     const switchTab = (activeIndex: number) => {
-      clickSound.currentTime = 0;
-      clickSound.play();
+      SoundEffect.playClick();
 
       tabs.forEach((tab, index) => {
         const isActive = index === activeIndex;
@@ -84,18 +78,30 @@ export class MainUI {
     this.dailyChallengeTab.addEventListener("click", () => switchTab(2));
 
     this.soundButtonElement.addEventListener("click", () => {
-      typingSound.muted = !typingSound.muted;
-      bgMusic.muted = !bgMusic.muted;
+      // Toggle mute for all sounds
+      const muted = !SoundEffect["clickSoundEffect"].muted;
+      console.log(`Sound muted to ${muted}`);
+      SoundEffect.muteAllSoundEffect(muted);
 
-      if (!bgMusic.muted && bgMusic.paused) {
-        bgMusic.play();
-      }
-
-      this.soundIconElement.src = typingSound.muted
+      this.soundIconElement.src = muted
         ? "./sound-mute-solid.svg"
         : "./sound-on-solid.svg";
 
-      this.soundIconElement.alt = typingSound.muted ? "Sound Off" : "Sound On";
+      this.soundIconElement.alt = muted ? "Sound Off" : "Sound On";
+    });
+
+    this.musicButtonElement.addEventListener("click", () => {
+      const muted = SoundEffect["bgMusic"].muted;
+      console.log(`Background music muted to ${!muted}`);
+
+      if (!muted) {
+        SoundEffect.playBgMusic();
+      }
+
+      SoundEffect.muteBgMusic(!muted);
+
+      this.musicIconElement.src = !muted ? "./music-off.svg" : "./music-on.svg";
+      this.musicIconElement.alt = !muted ? "Music Off" : "Music On";
     });
 
     new Typed(this.speechContentElement, {
@@ -105,14 +111,13 @@ export class MainUI {
       loop: true,
       cursorChar: "|",
 
-      onStringTyped: () => {
-        typingSound.pause();
-        typingSound.currentTime = 0;
+      preStringTyped: () => {
+        SoundEffect.playKeyboard();
       },
 
-      preStringTyped: () => {
-        typingSound.loop = true;
-        typingSound.play();
+      onStringTyped: () => {
+        SoundEffect.keyboardSoundEffect.pause();
+        SoundEffect.keyboardSoundEffect.currentTime = 0;
       },
     });
   }
