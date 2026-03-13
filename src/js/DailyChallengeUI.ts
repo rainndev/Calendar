@@ -1,5 +1,6 @@
 import challenges from "../data/daily-challenge.json";
 import type { DailyChallenge } from "../types/daily-challenge.type";
+import { getRelativeTime } from "../utils/time";
 import { Animate } from "./Animate";
 import type { MainUI } from "./MainUI";
 
@@ -91,7 +92,7 @@ export class DailyChallengeUI {
       const li = document.createElement("li");
       li.innerHTML = `
       <p class="list-style-header" style="font-weight: bold">
-          ${element.date}
+          ${getRelativeTime(element.date)}
       </p>
 
       <p>- ${element.challenge}</p>
