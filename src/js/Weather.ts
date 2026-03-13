@@ -1,3 +1,5 @@
+import type { NominatimReverseResponse } from "../types/location";
+import { getUserLocation } from "../utils/location";
 import { WeatherUI } from "./WeatherUI";
 type CurrentWeather = {
   temperature_2m: number;
@@ -15,14 +17,22 @@ type HourlyForecast = {
 };
 
 export class Weather {
-  private latitude: number;
-  private longitude: number;
+  private latitude: number = 15.0343;
+  private longitude: number = 120.6844;
+  private city: string = "Unknown";
+  private country: string = "Unknown";
   WeatherUI: WeatherUI;
 
-  constructor(lat: number, lon: number) {
+  constructor() {
     this.WeatherUI = new WeatherUI(this);
-    this.latitude = lat;
-    this.longitude = lon;
+
+    getUserLocation().then(async ({ lat, lon }) => {
+      this.latitude = lat;
+      this.longitude = lon;
+      await this.getLocationName();
+
+      this.WeatherUI.render();
+    });
   }
 
   async getWeather() {
@@ -49,6 +59,46 @@ export class Weather {
       current: data.current as CurrentWeather | undefined,
       hourly: data.hourly as HourlyForecast | undefined,
     };
+  }
+
+  private async getLocationName() {
+    const url =
+      `https://nominatim.openstreetmap.org/reverse` +
+      `?lat=${this.latitude}` +
+      `&lon=${this.longitude}` +
+      `&format=json`;
+
+    const response = await fetch(url, {
+      headers: {
+        "Accept-Language": "en",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch location");
+    }
+
+    const data: NominatimReverseResponse = await response.json();
+
+    const address = data.address;
+
+    this.city =
+      address.city ||
+      address.town ||
+      address.village ||
+      address.municipality ||
+      address.state ||
+      "Pampanga";
+
+    this.country = address.country || "Philippines";
+  }
+
+  getCity() {
+    return this.city;
+  }
+
+  getCountry() {
+    return this.country;
   }
 
   getTodayHourlyForecast(hourly: HourlyForecast) {

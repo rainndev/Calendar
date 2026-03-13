@@ -41,9 +41,12 @@ export class WeatherUI {
   }
 
   async render() {
+    this.weather.getCity();
+    this.weather.getCountry();
+
     Animate.decryptionAnimation(
       this.locationTitleElement,
-      "Pampanga, Philippines",
+      `${this.weather.getCity()}, ${this.weather.getCountry()}`,
     );
 
     this.showMonthTitle();

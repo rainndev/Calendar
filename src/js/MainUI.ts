@@ -42,7 +42,7 @@ export class MainUI {
     this.soundIconElement = $("sound-icon") as HTMLImageElement;
     this.dailyChallengeElement = $("daily-challenge-element");
     this.dailyChallengeTab = $("daily-tab-btn");
-    this.Weather = new Weather(15.0343, 120.6844);
+    this.Weather = new Weather();
     this.DailyChallengeUI = new DailyChallengeUI(this);
 
     // Tab switching
