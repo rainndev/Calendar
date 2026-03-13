@@ -1,5 +1,5 @@
 import Typed from "typed.js";
-import { getGreetingsBasedOnTime } from "../utils/greetings";
+import { message } from "../data/dialog-messages";
 import { Calendar } from "./Calendar";
 import { DailyChallengeUI } from "./DailyChallengeUI";
 import { Weather } from "./Weather";
@@ -45,40 +45,39 @@ export class MainUI {
     this.Weather = new Weather();
     this.DailyChallengeUI = new DailyChallengeUI(this);
 
+    const tabs = [
+      {
+        button: this.calendarTabBtn,
+        element: this.calendarElement,
+        render: () => this.Calendar.CalendarUI.render(),
+      },
+      {
+        button: this.weatherTabBtn,
+        element: this.weatherElement,
+        render: () => this.Weather.WeatherUI.render(),
+      },
+      {
+        button: this.dailyChallengeTab,
+        element: this.dailyChallengeElement,
+        render: () => this.DailyChallengeUI.render(),
+      },
+    ];
+
     // Tab switching
-    const switchTab = (show: HTMLElement, hide: HTMLElement) => {
-      show.style.display = "block";
-      hide.style.display = "none";
+    const switchTab = (activeIndex: number) => {
+      tabs.forEach((tab, index) => {
+        const isActive = index === activeIndex;
+
+        tab.button.classList.toggle("active-tab", isActive);
+        tab.element.style.display = isActive ? "block" : "none";
+
+        if (isActive) tab.render();
+      });
     };
 
-    this.calendarTabBtn.addEventListener("click", () => {
-      this.calendarTabBtn.classList.add("active-tab");
-      this.weatherTabBtn.classList.remove("active-tab");
-      this.dailyChallengeTab.classList.remove("active-tab");
-      this.Calendar.CalendarUI.render();
-      switchTab(this.calendarElement, this.weatherElement);
-      switchTab(this.calendarElement, this.dailyChallengeElement);
-    });
-
-    this.weatherTabBtn.addEventListener("click", () => {
-      this.weatherTabBtn.classList.add("active-tab");
-      this.calendarTabBtn.classList.remove("active-tab");
-      this.dailyChallengeTab.classList.remove("active-tab");
-      switchTab(this.weatherElement, this.calendarElement);
-      switchTab(this.weatherElement, this.dailyChallengeElement);
-      this.Weather.WeatherUI.render();
-    });
-
-    this.dailyChallengeTab.addEventListener("click", () => {
-      this.dailyChallengeTab.classList.add("active-tab");
-      this.calendarTabBtn.classList.remove("active-tab");
-      this.weatherTabBtn.classList.remove("active-tab");
-
-      switchTab(this.dailyChallengeElement, this.calendarElement);
-      switchTab(this.dailyChallengeElement, this.weatherElement);
-
-      this.DailyChallengeUI.render();
-    });
+    this.calendarTabBtn.addEventListener("click", () => switchTab(0));
+    this.weatherTabBtn.addEventListener("click", () => switchTab(1));
+    this.dailyChallengeTab.addEventListener("click", () => switchTab(2));
 
     this.soundButtonElement.addEventListener("click", () => {
       typingSound.muted = !typingSound.muted;
@@ -95,14 +94,6 @@ export class MainUI {
 
       this.soundIconElement.alt = typingSound.muted ? "Sound Off" : "Sound On";
     });
-
-    const message = [
-      `Hello User! ${getGreetingsBasedOnTime()}`,
-      "Click on the tabs to explore features!",
-      "You can also hold on calendar days to see holiday details!",
-      "Weather data is fetched from Open-Meteo API!",
-      "This project was built with TypeScript and Motion by Rainier Sison.",
-    ];
 
     new Typed(this.speechContentElement, {
       strings: message,
