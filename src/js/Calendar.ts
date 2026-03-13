@@ -145,14 +145,15 @@ export class Calendar {
         .toString()
         .padStart(2, "0")}-${i.toString().padStart(2, "0")}`;
 
-      const hasChallenge = this.dailyChallengeData.some(
-        (challenge) => challenge.date === dayStr && challenge.proofImage,
-      );
+      const hasChallenge = this.dailyChallengeData.some((challenge) => {
+        const challengeDate = challenge.date.split("T")[0];
+        return challengeDate === dayStr && challenge.proofImage;
+      });
 
       if (hasChallenge) {
         const indicator = document.createElement("span");
         indicator.classList.add("challenge-indicator");
-        day.appendChild(indicator); // append AFTER innerText
+        day.appendChild(indicator);
       }
 
       // Highlight today
