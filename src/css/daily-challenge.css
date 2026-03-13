@@ -1,0 +1,157 @@
+.daily-challenge-container {
+  display: none;
+  width: 1000px;
+  overflow: hidden;
+  padding: 1rem;
+  padding-top: 0;
+  z-index: 0;
+}
+
+.daily-challenge {
+  padding: 2rem;
+  background-color: var(--bg-color);
+  box-shadow: 12px 12px 0px 0px var(--text-color);
+  border: 5px solid var(--text-color);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0rem;
+}
+
+.daily-challenge-title-container {
+  margin-top: 0rem;
+  background-color: var(--text-color);
+  color: var(--accent-color);
+  border: 5px solid var(--text-color);
+  border-radius: 1rem;
+  border-bottom: none;
+  box-shadow: 4px 4px 0px 0px var(--text-color);
+  padding: 2rem;
+}
+
+#daily-challenge-text {
+  padding: 15px;
+  border: 1px solid var(--accent-color);
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  line-height: 1rem;
+}
+
+.daily-challenge-top {
+  height: 700px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.daily-challenge-top ul {
+  padding: 1rem 0rem;
+  padding-right: 0.5rem;
+  overflow-y: auto;
+  flex: 1;
+  list-style-type: none;
+
+  /* scroll fade mask */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.daily-challenge-top ul li {
+  color: var(--text-color);
+  font-size: 0.8rem;
+  line-height: 1rem;
+  padding: 0.1rem 0rem;
+}
+
+.daily-challenge-bottom {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: end;
+  gap: 1rem;
+}
+
+#imageInput {
+  height: 100%;
+  padding: 0.5rem;
+  border: 1px dashed var(--text-color);
+  border-radius: 1rem;
+  background-color: var(--bg-color);
+}
+
+.upload-container {
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem;
+  position: relative;
+}
+
+.upload-container p {
+  font-size: 0.6rem;
+  color: var(--text-color);
+  line-height: 1rem;
+}
+
+/* 1. Hide the native input */
+.hidden-input {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+  z-index: -1;
+}
+
+/* 2. Style your custom button */
+.custom-button {
+  border: 2px dashed var(--text-color);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 200px;
+  gap: 1rem;
+}
+
+.custom-button span {
+  text-align: center;
+  color: var(--text-color);
+  font-size: 0.8rem;
+  padding: 0rem 1rem;
+}
+
+.custom-button:hover {
+  background-color: var(--accent-color);
+}
+
+/* 3. Add focus styles for accessibility */
+.hidden-input:focus + .custom-button {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+.list-style-header {
+  font-size: 0.8rem;
+  width: fit-content;
+  border: 5px solid var(--text-color);
+  border-radius: 9999px;
+  border-bottom: none;
+  box-shadow: 2px 2px 0px 0px var(--text-color);
+  padding: 0.5rem 1rem;
+}

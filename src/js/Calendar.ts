@@ -203,19 +203,36 @@ export class Calendar {
   }
 
   addDailyChallengeEntry(challenge: string, proofImage?: string) {
-    const dailyChallenge: DailyChallenge[] = localStorage.getItem(
-      "dailyChallenge",
-    )
-      ? JSON.parse(localStorage.getItem("dailyChallenge")!)
-      : ([] as DailyChallenge[]);
+    const stored = localStorage.getItem("dailyChallenge");
 
-    console.log("Adding daily challenge entry:", { challenge, proofImage });
-    dailyChallenge.push({
+    let dailyChallenge: DailyChallenge[];
+
+    try {
+      dailyChallenge = stored ? JSON.parse(stored) : [];
+    } catch {
+      throw new Error("Invalid dailyChallenge data in localStorage");
+    }
+
+    if (!challenge || challenge.trim() === "") {
+      throw new Error("Challenge cannot be empty");
+    }
+
+    if (dailyChallenge.some((entry) => entry.challenge === challenge)) {
+      throw new Error("You have already finished this challenge");
+    }
+
+    const entry: DailyChallenge = {
       date: new Date().toISOString().split("T")[0],
       challenge,
       proofImage,
-    });
+    };
 
-    localStorage.setItem("dailyChallenge", JSON.stringify(dailyChallenge));
+    dailyChallenge.push(entry);
+
+    try {
+      localStorage.setItem("dailyChallenge", JSON.stringify(dailyChallenge));
+    } catch {
+      throw new Error("Failed to save daily challenge to localStorage");
+    }
   }
 }

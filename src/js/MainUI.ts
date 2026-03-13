@@ -1,6 +1,7 @@
 import Typed from "typed.js";
 import { getGreetingsBasedOnTime } from "../utils/greetings";
 import { Calendar } from "./Calendar";
+import { DailyChallengeUI } from "./DailyChallengeUI";
 import { Weather } from "./Weather";
 
 const typingSound = new Audio("./sounds/keyboard-sound-effect.mp3");
@@ -16,10 +17,13 @@ bgMusic.play();
 export class MainUI {
   Calendar: Calendar;
   Weather: Weather;
+  DailyChallengeUI: DailyChallengeUI;
   calendarTabBtn: HTMLButtonElement;
   weatherTabBtn: HTMLButtonElement;
+  dailyChallengeTab: HTMLButtonElement;
   calendarElement: HTMLElement;
   weatherElement: HTMLElement;
+  dailyChallengeElement: HTMLElement;
   speechContentElement: HTMLParagraphElement;
   soundButtonElement: HTMLButtonElement;
   soundIconElement: HTMLImageElement;
@@ -36,7 +40,10 @@ export class MainUI {
     this.speechContentElement = $("speech-content");
     this.soundButtonElement = $("sound-effect-button");
     this.soundIconElement = $("sound-icon") as HTMLImageElement;
+    this.dailyChallengeElement = $("daily-challenge-element");
+    this.dailyChallengeTab = $("daily-tab-btn");
     this.Weather = new Weather(15.0343, 120.6844);
+    this.DailyChallengeUI = new DailyChallengeUI(this);
 
     // Tab switching
     const switchTab = (show: HTMLElement, hide: HTMLElement) => {
@@ -47,14 +54,30 @@ export class MainUI {
     this.calendarTabBtn.addEventListener("click", () => {
       this.calendarTabBtn.classList.add("active-tab");
       this.weatherTabBtn.classList.remove("active-tab");
+      this.dailyChallengeTab.classList.remove("active-tab");
+      this.Calendar.CalendarUI.render();
       switchTab(this.calendarElement, this.weatherElement);
+      switchTab(this.calendarElement, this.dailyChallengeElement);
     });
 
     this.weatherTabBtn.addEventListener("click", () => {
       this.weatherTabBtn.classList.add("active-tab");
       this.calendarTabBtn.classList.remove("active-tab");
+      this.dailyChallengeTab.classList.remove("active-tab");
       switchTab(this.weatherElement, this.calendarElement);
+      switchTab(this.weatherElement, this.dailyChallengeElement);
       this.Weather.WeatherUI.render();
+    });
+
+    this.dailyChallengeTab.addEventListener("click", () => {
+      this.dailyChallengeTab.classList.add("active-tab");
+      this.calendarTabBtn.classList.remove("active-tab");
+      this.weatherTabBtn.classList.remove("active-tab");
+
+      switchTab(this.dailyChallengeElement, this.calendarElement);
+      switchTab(this.dailyChallengeElement, this.weatherElement);
+
+      this.DailyChallengeUI.render();
     });
 
     this.soundButtonElement.addEventListener("click", () => {
