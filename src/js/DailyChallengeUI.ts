@@ -3,6 +3,7 @@ import type { DailyChallenge } from "../types/daily-challenge.type";
 import { getRelativeTime } from "../utils/time";
 import { Animate } from "./Animate";
 import type { MainUI } from "./MainUI";
+import { SoundEffect } from "./SoundEffect";
 
 export class DailyChallengeUI {
   mainUI: MainUI;
@@ -32,6 +33,7 @@ export class DailyChallengeUI {
     this.imageChallengePreview = $("challenge-image-preview");
 
     this.input.addEventListener("change", () => {
+      SoundEffect.playShow();
       const file = this.input.files?.[0];
       if (!file) return;
 
@@ -48,6 +50,7 @@ export class DailyChallengeUI {
     });
 
     this.finishChallengeButton.addEventListener("click", () => {
+      SoundEffect.playClick();
       try {
         mainUI.Calendar.addDailyChallengeEntry(
           this.todayChallenge,

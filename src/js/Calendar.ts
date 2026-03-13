@@ -260,6 +260,7 @@ export class Calendar {
   }
 
   async nextMonth() {
+    SoundEffect.playClick();
     await Animate.exitListStagger(".day");
     this.displayDate.setMonth(this.displayDate.getMonth() + 1);
     this.updateMonthYear();
@@ -268,6 +269,7 @@ export class Calendar {
   }
 
   async prevMonth() {
+    SoundEffect.playClick();
     await Animate.exitListStagger(".day");
     this.displayDate.setMonth(this.displayDate.getMonth() - 1);
     this.updateMonthYear();

@@ -78,6 +78,7 @@ export class MainUI {
     this.dailyChallengeTab.addEventListener("click", () => switchTab(2));
 
     this.soundButtonElement.addEventListener("click", () => {
+      SoundEffect.playClick();
       // Toggle mute for all sounds
       const muted = !SoundEffect["clickSoundEffect"].muted;
       console.log(`Sound muted to ${muted}`);
@@ -91,6 +92,7 @@ export class MainUI {
     });
 
     this.musicButtonElement.addEventListener("click", () => {
+      SoundEffect.playClick();
       const muted = SoundEffect["bgMusic"].muted;
       console.log(`Background music muted to ${!muted}`);
 
