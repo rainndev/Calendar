@@ -13,7 +13,6 @@ export class Calendar {
   month: number;
   holdTimer: number | undefined;
   isTooltipVisible: boolean = false;
-  dailyChallengeData: DailyChallenge[];
 
   constructor() {
     this.currentDate = new Date();
@@ -23,9 +22,6 @@ export class Calendar {
     this.month = this.displayDate.getMonth();
     this.holdTimer = undefined;
     this.isTooltipVisible = false;
-    this.dailyChallengeData = localStorage.getItem("dailyChallenge")
-      ? JSON.parse(localStorage.getItem("dailyChallenge")!)
-      : ([] as DailyChallenge[]);
   }
 
   getCurrentTime(): string {
@@ -111,6 +107,59 @@ export class Calendar {
     });
   }
 
+  showToolTipChallenge(day: HTMLElement, challenge: DailyChallenge): void {
+    const tooltip = document.createElement("div");
+    tooltip.classList.add("challenge-tooltip");
+    tooltip.innerHTML = `
+        <div> 
+          <p class="challenge-type">Completed</p>  
+          <strong>${challenge.challenge}</strong><br/>
+          <small>${new Date(challenge.date).toLocaleDateString()}</small>
+      </div>
+      <img class="challenge-image" src="${challenge.proofImage}"/>
+    `;
+    document.body.appendChild(tooltip);
+    day.addEventListener("mouseenter", () => {
+      const rect = day.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      let left = rect.left + rect.width / 2 - tooltipRect.width / 2;
+      left = Math.max(5, Math.min(left, viewportWidth - tooltipRect.width - 5));
+      let top = rect.top - tooltipRect.height - 10;
+      if (top < 5) {
+        top = rect.bottom + 10;
+      }
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
+      animate(
+        tooltip,
+        {
+          opacity: [0, 1],
+          scale: [0.8, 1],
+          y: [-10, 0],
+        },
+        {
+          type: "spring",
+          stiffness: 300,
+          damping: 20,
+          duration: 0.3,
+        },
+      );
+    });
+
+    day.addEventListener("mouseleave", () => {
+      animate(
+        tooltip,
+        {
+          opacity: [1, 0],
+          scale: [1, 0.8],
+          y: [0, -10],
+        },
+        { duration: 0.2 },
+      );
+    });
+  }
+
   addEmptySlots() {
     const firstDay = new Date(this.year, this.month, 1).getDay();
 
@@ -123,6 +172,11 @@ export class Calendar {
 
   addDaySlots() {
     const daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
+    const dailyChallengeData: DailyChallenge[] = localStorage.getItem(
+      "dailyChallenge",
+    )
+      ? JSON.parse(localStorage.getItem("dailyChallenge")!)
+      : ([] as DailyChallenge[]);
 
     for (let i = 1; i <= daysInMonth; i++) {
       const day = document.createElement("div");
@@ -140,12 +194,24 @@ export class Calendar {
         }
       });
 
+      // Check for daily challenges
+      dailyChallengeData.forEach((challenge) => {
+        const challengeDate = new Date(challenge.date);
+        if (
+          challengeDate.getDate() === i &&
+          challengeDate.getMonth() === this.month
+        ) {
+          day.classList.add("challenge-day");
+          this.showToolTipChallenge(day, challenge);
+        }
+      });
+
       // Check for daily challenge
       const dayStr = `${this.year}-${(this.month + 1)
         .toString()
         .padStart(2, "0")}-${i.toString().padStart(2, "0")}`;
 
-      const hasChallenge = this.dailyChallengeData.some((challenge) => {
+      const hasChallenge = dailyChallengeData.some((challenge) => {
         const challengeDate = challenge.date.split("T")[0];
         return challengeDate === dayStr && challenge.proofImage;
       });
@@ -174,6 +240,7 @@ export class Calendar {
     this.year = this.displayDate.getFullYear();
     this.month = this.displayDate.getMonth();
   }
+
   displayCurrentMonthYear() {
     const monthName = this.displayDate.toLocaleString("default", {
       month: "long",
