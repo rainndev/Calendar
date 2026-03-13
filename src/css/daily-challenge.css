@@ -142,16 +142,17 @@
 
 /* 3. Add focus styles for accessibility */
 .hidden-input:focus + .custom-button {
-  outline: 2px solid black;
+  outline: 2px solid var(--text-color);
   outline-offset: 2px;
 }
 
 .list-style-header {
-  font-size: 0.8rem;
+  background-color: var(--accent-color);
+  font-size: 0.5rem;
   width: fit-content;
   border: 5px solid var(--text-color);
   border-radius: 9999px;
   border-bottom: none;
   box-shadow: 2px 2px 0px 0px var(--text-color);
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 1rem;
 }
