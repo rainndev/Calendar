@@ -11,26 +11,23 @@ export class DailyChallengeUI {
   uploadText: HTMLSpanElement;
   finishChallengeButton: HTMLButtonElement;
   recentListUL: HTMLUListElement;
+  noChallengeUI: HTMLElement;
 
   imageBase64: string = "";
   todayDate: Date = new Date();
   todayChallenge: string = "";
 
   constructor(mainUI: MainUI) {
+    const $ = <T extends HTMLElement>(id: string) =>
+      document.getElementById(id) as T;
+
     this.mainUI = mainUI;
-    this.dailyChallengeText = document.getElementById(
-      "daily-challenge-text",
-    ) as HTMLParagraphElement;
-    this.input = document.getElementById("imageInput") as HTMLInputElement;
-    this.uploadText = document.getElementById(
-      "upload-image-text",
-    ) as HTMLSpanElement;
-    this.finishChallengeButton = document.getElementById(
-      "finish-challenge-btn",
-    ) as HTMLButtonElement;
-    this.recentListUL = document.getElementById(
-      "recent-challenges-list",
-    ) as HTMLUListElement;
+    this.dailyChallengeText = $("daily-challenge-text");
+    this.input = $("imageInput");
+    this.uploadText = $("upload-text");
+    this.finishChallengeButton = $("finish-challenge-btn");
+    this.recentListUL = $("recent-challenges-list");
+    this.noChallengeUI = $("no-challenge-ui");
 
     this.input.addEventListener("change", () => {
       const file = this.input.files?.[0];
@@ -68,6 +65,15 @@ export class DailyChallengeUI {
 
   render() {
     this.showTodayChallenge();
+
+    if (localStorage.getItem("dailyChallenge")) {
+      this.noChallengeUI.style.display = "none";
+      this.recentListUL.style.display = "block";
+    } else {
+      this.noChallengeUI.style.display = "flex";
+      this.recentListUL.style.display = "none";
+    }
+
     this.renderRecentChallenges();
   }
 

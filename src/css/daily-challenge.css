@@ -156,3 +156,19 @@
   box-shadow: 2px 2px 0px 0px var(--text-color);
   padding: 0.2rem 1rem;
 }
+
+#no-challenge-ui {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--gray-color);
+  font-style: italic;
+  text-align: center;
+}
+
+#no-challenge-ui svg {
+  fill: var(--gray-color);
+}
