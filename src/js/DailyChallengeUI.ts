@@ -51,7 +51,7 @@ export class DailyChallengeUI {
           this.imageBase64,
         );
 
-        this.render();
+        this.renderRecentChallenges();
         alert("Challenge completed! Your proof has been saved.");
       } catch (err) {
         if (err instanceof Error) {
@@ -64,15 +64,6 @@ export class DailyChallengeUI {
 
   render() {
     this.showTodayChallenge();
-
-    if (localStorage.getItem("dailyChallenge")) {
-      this.noChallengeUI.style.display = "none";
-      this.recentListUL.style.display = "block";
-    } else {
-      this.noChallengeUI.style.display = "flex";
-      this.recentListUL.style.display = "none";
-    }
-
     this.renderRecentChallenges();
   }
 
@@ -86,6 +77,14 @@ export class DailyChallengeUI {
   }
 
   renderRecentChallenges() {
+    if (localStorage.getItem("dailyChallenge")) {
+      this.noChallengeUI.style.display = "none";
+      this.recentListUL.style.display = "block";
+    } else {
+      this.noChallengeUI.style.display = "flex";
+      this.recentListUL.style.display = "none";
+    }
+
     const dailyChallengeData = localStorage.getItem("dailyChallenge")
       ? (JSON.parse(
           localStorage.getItem("dailyChallenge")!,
