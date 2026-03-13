@@ -2,6 +2,7 @@ import { animate } from "motion";
 import holidayData from "../data/holidays.json";
 import type { DailyChallenge } from "../types/daily-challenge.type";
 import type { HolidayType } from "../types/holiday.types";
+import { getRelativeTime } from "../utils/time";
 import { Animate } from "./Animate";
 import { CalendarUI } from "./CalendarUI";
 
@@ -114,7 +115,7 @@ export class Calendar {
         <div> 
           <p class="challenge-type">Completed</p>  
           <strong>${challenge.challenge}</strong><br/>
-          <small>${new Date(challenge.date).toLocaleDateString()}</small>
+          <small>${getRelativeTime(challenge.date)}</small>
       </div>
       <img class="challenge-image" src="${challenge.proofImage}"/>
     `;
