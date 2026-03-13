@@ -4,6 +4,8 @@ import { Calendar } from "./Calendar";
 import { DailyChallengeUI } from "./DailyChallengeUI";
 import { Weather } from "./Weather";
 
+const clickSound = new Audio("./sounds/hit-sound-effect.mp3");
+
 const typingSound = new Audio("./sounds/keyboard-sound-effect.mp3");
 typingSound.muted = true;
 typingSound.volume = 1;
@@ -65,9 +67,11 @@ export class MainUI {
 
     // Tab switching
     const switchTab = (activeIndex: number) => {
+      clickSound.currentTime = 0;
+      clickSound.play();
+
       tabs.forEach((tab, index) => {
         const isActive = index === activeIndex;
-
         tab.button.classList.toggle("active-tab", isActive);
         tab.element.style.display = isActive ? "block" : "none";
 
@@ -81,7 +85,6 @@ export class MainUI {
 
     this.soundButtonElement.addEventListener("click", () => {
       typingSound.muted = !typingSound.muted;
-
       bgMusic.muted = !bgMusic.muted;
 
       if (!bgMusic.muted && bgMusic.paused) {
