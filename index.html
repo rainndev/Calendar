@@ -18,15 +18,18 @@
     <link rel="stylesheet" href="./src/css/daily-challenge.css" />
   </head>
   <body class="press-start-2p-regular grid-bg">
+    <!-- sound effect button -->
     <button id="sound-effect-button">
       <img id="sound-icon" src="./public/sound-on-solid.svg" alt="Sound ON" />
     </button>
 
+    <!-- music effect button  -->
     <button id="bg-music-button">
       <img id="music-icon" src="./public/music-off.svg" alt="Music OFF" />
     </button>
 
     <div class="container">
+      <!-- welcome message and tabs  -->
       <div class="tabs-container">
         <div>
           <button id="calendar-tab-btn" class="tabs">Calendar</button>
@@ -39,6 +42,7 @@
         <img src="./welcome-wave-half.png" alt="welcome-img" />
       </div>
 
+      <!-- calendar UI -->
       <div id="calendar-element" class="calendar-container">
         <div class="calendar-header">
           <div>
@@ -82,6 +86,7 @@
         </div>
       </div>
 
+      <!-- weather UI -->
       <div id="weather-element" class="weather-container">
         <div class="weather-header">
           <div>
@@ -150,6 +155,7 @@
         </div>
       </div>
 
+      <!-- daily challenge UI -->
       <div id="daily-challenge-element" class="daily-challenge-container">
         <div class="daily-challenge-title-container">
           <h2 class="daily-challenge-title">Today's Challenge</h2>
@@ -158,6 +164,7 @@
 
         <div class="daily-challenge">
           <div class="daily-challenge-top">
+            <!-- upload image UI -->
             <div class="upload-container">
               <input
                 type="file"
@@ -212,6 +219,7 @@
               </div>
             </div>
 
+            <!-- complete challenge button -->
             <div style="width: 100%; margin-top: 1rem">
               <button id="finish-challenge-btn" class="buttons">
                 Complete Challenge
@@ -219,6 +227,7 @@
             </div>
           </div>
 
+          <!-- challenge image preview -->
           <div style="flex: 1">
             <img
               src="./image-solid.svg"
@@ -230,11 +239,14 @@
           </div>
         </div>
 
+        <!-- list recent challenges UI -->
         <div class="daily-challenge-bottom">
           <p class="daily-challenge-bottom-title">Recent Challenge Completed</p>
 
           <div class="recent-challenges-list-container">
+            <!-- recent challenges list -->
             <ul id="recent-challenges-list"></ul>
+            <!-- no challenges completed UI -->
             <div id="no-challenge-ui">
               <svg
                 id="life-hacking"
