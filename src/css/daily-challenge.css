@@ -39,22 +39,20 @@
   line-height: 1rem;
 }
 
-.daily-challenge-top {
+.daily-challenge-bottom {
   height: 700px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.daily-challenge-top ul {
-  padding: 1rem 0rem;
+.daily-challenge-bottom ul {
   padding-right: 0.5rem;
-  overflow-y: auto;
   flex: 1;
   list-style-type: none;
 
   /* scroll fade mask */
-  mask-image: linear-gradient(
+  /* mask-image: linear-gradient(
     to bottom,
     transparent 0%,
     black 10%,
@@ -68,17 +66,27 @@
     black 10%,
     black 90%,
     transparent 100%
-  );
+  ); */
 }
 
-.daily-challenge-top ul li {
+.daily-challenge-bottom ul li {
   color: var(--text-color);
   font-size: 0.8rem;
   line-height: 1rem;
   padding: 0.1rem 0rem;
 }
 
-.daily-challenge-bottom {
+.daily-challenge-bottom-title {
+  padding: 15px;
+  background-color: var(--text-color);
+  box-shadow: 12px 12px 0px 0px var(--text-color);
+  color: var(--accent-color);
+  border: 5px solid var(--text-color);
+  padding: 1rem;
+  border-bottom: none;
+}
+
+.daily-challenge-top {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -146,6 +154,18 @@
   outline-offset: 2px;
 }
 
+.recent-challenges-list-container {
+  margin-top: 1rem;
+  height: 100%;
+  overflow-y: auto;
+  box-shadow: 12px 12px 0px 0px var(--text-color);
+  border: 5px solid var(--text-color);
+  background-color: var(--bg-color);
+  box-shadow: 12px 12px 0px 0px var(--text-color);
+  border: 5px solid var(--text-color);
+  background-color: var(--bg-color);
+}
+
 .list-style-header {
   background-color: var(--accent-color);
   font-size: 0.5rem;
@@ -158,6 +178,7 @@
 }
 
 #no-challenge-ui {
+  height: 600px;
   display: flex;
   flex-direction: column;
   font-size: 0.8rem;
@@ -167,8 +188,25 @@
   color: var(--gray-color);
   font-style: italic;
   text-align: center;
+  padding: 0rem 7rem;
+  line-height: 1.2rem;
 }
 
 #no-challenge-ui svg {
   fill: var(--gray-color);
+}
+
+#challenge-image-preview {
+  border: 1px solid var(--gray-color);
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+}
+
+#finish-challenge-btn {
+  font-size: 0.8rem;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--primary-color);
 }

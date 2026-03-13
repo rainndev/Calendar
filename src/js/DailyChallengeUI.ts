@@ -12,6 +12,7 @@ export class DailyChallengeUI {
   finishChallengeButton: HTMLButtonElement;
   recentListUL: HTMLUListElement;
   noChallengeUI: HTMLElement;
+  imageChallengePreview: HTMLImageElement;
 
   imageBase64: string = "";
   todayDate: Date = new Date();
@@ -28,6 +29,7 @@ export class DailyChallengeUI {
     this.finishChallengeButton = $("finish-challenge-btn");
     this.recentListUL = $("recent-challenges-list");
     this.noChallengeUI = $("no-challenge-ui");
+    this.imageChallengePreview = $("challenge-image-preview");
 
     this.input.addEventListener("change", () => {
       const file = this.input.files?.[0];
@@ -39,6 +41,7 @@ export class DailyChallengeUI {
 
       reader.onload = () => {
         this.imageBase64 = reader.result as string;
+        this.imageChallengePreview.src = this.imageBase64;
       };
 
       reader.readAsDataURL(file);
@@ -59,6 +62,10 @@ export class DailyChallengeUI {
           alert(err.message);
         }
       }
+
+      this.input.value = "";
+      this.uploadText.textContent = "Upload proof image";
+      this.imageChallengePreview.src = "./public/image-solid.svg";
     });
   }
 
@@ -92,28 +99,21 @@ export class DailyChallengeUI {
       : [];
 
     this.recentListUL.innerHTML = "";
-    dailyChallengeData.slice(0, 10).forEach((element) => {
-      const li = document.createElement("li");
-      li.innerHTML = `
+    dailyChallengeData
+      .slice()
+      .reverse() // newest first
+      .slice(0, 20) // limit to 10
+      .forEach((element) => {
+        const li = document.createElement("li");
+
+        li.innerHTML = `
       <p class="list-style-header" style="font-weight: bold">
-          ${getRelativeTime(element.date)}
+        ${getRelativeTime(element.date)}
       </p>
-
       <p>- ${element.challenge}</p>
-
-      <img
-        width="100%"
-        style="
-          height: 200px;
-          border-radius: 0.5rem;
-          object-fit: cover;
-          aspect-ratio: 16/9;
-        "
-        src=${element.proofImage}
-        alt=${element.challenge + " proof image"}
-       />
     `;
-      this.recentListUL.appendChild(li);
-    });
+
+        this.recentListUL.appendChild(li);
+      });
   }
 }
