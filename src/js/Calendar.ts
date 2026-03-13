@@ -117,7 +117,11 @@ export class Calendar {
         <div> 
           <p class="challenge-type">Completed</p>  
           <strong>${challenge.challenge}</strong><br/>
-          <small>${getRelativeTime(challenge.date)}</small>
+          <small> 
+            <span> 
+                <img src="./time-icon-challenge.svg" alt="Time Icon">
+            </span>
+          ${getRelativeTime(challenge.date)}</small>
       </div>
       <img class="challenge-image" src="${challenge.proofImage}"/>
     `;
