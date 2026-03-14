@@ -1,4 +1,3 @@
-import { animate } from "motion";
 import holidayData from "../data/holidays.json";
 import type { DailyChallenge } from "../types/daily-challenge.type";
 import type { HolidayType } from "../types/holiday.types";
@@ -72,21 +71,7 @@ export class Calendar {
         tooltip.style.left = `${left}px`;
         tooltip.style.top = `${top}px`;
 
-        animate(
-          tooltip,
-          {
-            opacity: [0, 1],
-            scale: [0.8, 1],
-            y: [-10, 0],
-          },
-          {
-            type: "spring",
-            stiffness: 300,
-            damping: 20,
-            duration: 0.3,
-          },
-        );
-
+        Animate.popUpAnimation(tooltip);
         this.isTooltipVisible = true;
       }, 500);
     });
@@ -95,15 +80,7 @@ export class Calendar {
       if (this.holdTimer) clearTimeout(this.holdTimer);
 
       if (this.isTooltipVisible) {
-        animate(
-          tooltip,
-          {
-            opacity: [1, 0],
-            scale: [1, 0.8],
-            y: [0, -10],
-          },
-          { duration: 0.2 },
-        );
+        Animate.popDownAnimation(tooltip);
       }
 
       this.isTooltipVisible = false;
@@ -140,32 +117,12 @@ export class Calendar {
       }
       tooltip.style.left = `${left}px`;
       tooltip.style.top = `${top}px`;
-      animate(
-        tooltip,
-        {
-          opacity: [0, 1],
-          scale: [0.8, 1],
-          y: [-10, 0],
-        },
-        {
-          type: "spring",
-          stiffness: 300,
-          damping: 20,
-          duration: 0.3,
-        },
-      );
+
+      Animate.popUpAnimation(tooltip);
     });
 
     day.addEventListener("mouseleave", () => {
-      animate(
-        tooltip,
-        {
-          opacity: [1, 0],
-          scale: [1, 0.8],
-          y: [0, -10],
-        },
-        { duration: 0.2 },
-      );
+      Animate.popDownAnimation(tooltip);
     });
   }
 

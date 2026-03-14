@@ -1,5 +1,5 @@
 .guide-modal-container {
-  display: flex;
+  display: none;
   position: fixed;
   overflow: hidden;
   inset: 0;
