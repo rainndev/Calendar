@@ -1,5 +1,6 @@
 import Typed from "typed.js";
 import { message } from "../data/dialog-messages";
+import { Animate } from "./Animate";
 import { Calendar } from "./Calendar";
 import { DailyChallengeUI } from "./DailyChallengeUI";
 import { SoundEffect } from "./SoundEffect";
@@ -20,6 +21,9 @@ export class MainUI {
   soundIconElement: HTMLImageElement;
   musicButtonElement: HTMLButtonElement;
   musicIconElement: HTMLImageElement;
+  helpButtonElement: HTMLButtonElement;
+  guideModalElement: HTMLElement;
+  closeGuideButtonElement: HTMLDivElement;
 
   constructor() {
     const $ = <T extends HTMLElement>(id: string) =>
@@ -32,11 +36,14 @@ export class MainUI {
     this.weatherElement = $("weather-element");
     this.speechContentElement = $("speech-content");
     this.soundButtonElement = $("sound-effect-button");
-    this.soundIconElement = $("sound-icon") as HTMLImageElement;
+    this.soundIconElement = $("sound-icon");
     this.musicButtonElement = $("bg-music-button");
-    this.musicIconElement = $("music-icon") as HTMLImageElement;
+    this.musicIconElement = $("music-icon");
     this.dailyChallengeElement = $("daily-challenge-element");
     this.dailyChallengeTab = $("daily-tab-btn");
+    this.helpButtonElement = $("help-button");
+    this.guideModalElement = $("guide-modal");
+    this.closeGuideButtonElement = $("guide-close-btn");
     this.Weather = new Weather();
     this.DailyChallengeUI = new DailyChallengeUI(this);
 
@@ -104,6 +111,23 @@ export class MainUI {
 
       this.musicIconElement.src = !muted ? "./music-off.svg" : "./music-on.svg";
       this.musicIconElement.alt = !muted ? "Music Off" : "Music On";
+    });
+
+    this.helpButtonElement.addEventListener("click", () => {
+      SoundEffect.playClick();
+      this.guideModalElement.style.display = "flex";
+      Animate.popUpAnimation(this.guideModalElement);
+      document.body.style.overflow = "hidden";
+    });
+
+    this.closeGuideButtonElement.addEventListener("click", () => {
+      SoundEffect.playClick();
+      Animate.popDownAnimation(this.guideModalElement);
+
+      setTimeout(() => {
+        this.guideModalElement.style.display = "none";
+        document.body.style.overflow = "auto";
+      }, 300);
     });
 
     new Typed(this.speechContentElement, {

@@ -16,8 +16,96 @@
     <link rel="stylesheet" href="./src/css/calendar.css" />
     <link rel="stylesheet" href="./src/css/weather.css" />
     <link rel="stylesheet" href="./src/css/daily-challenge.css" />
+    <link rel="stylesheet" href="./src/css/guide.css" />
   </head>
   <body class="press-start-2p-regular grid-bg">
+    <div id="guide-modal" class="guide-modal-container">
+      <div class="guide-modal-body">
+        <div id="guide-close-btn">
+          <img width="40" src="./window-close-solid.svg" alt="" />
+        </div>
+        <h1 class="guide-title bounce-img">Guide</h1>
+        <div class="guide-modal-item">
+          <h3 class="courier-prime-regular-italic">
+            Hover calendar days with a red dot to see completed challenges for
+            that day.
+          </h3>
+          <img src="./guide-assets/completed-challenges.gif" />
+        </div>
+
+        <div class="guide-modal-item">
+          <h3 class="courier-prime-regular-italic">
+            Hold the Calendar days with a dashed border to see holiday
+            information for that day.
+          </h3>
+
+          <img
+            style="width: 100%; border-radius: 1rem; aspect-ratio: 16/9"
+            src="./guide-assets/holidays-hold-on.gif"
+            alt=""
+          />
+        </div>
+
+        <div class="guide-modal-item">
+          <h3 class="courier-prime-regular-italic">
+            Click the sound effect button to toggle sound effects on and off.
+            Click the music button to toggle background music on and off.
+          </h3>
+          <img
+            style="width: 100%; border-radius: 1rem; aspect-ratio: 16/9"
+            src="./guide-assets/sound-effects-button.gif"
+            alt=""
+          />
+        </div>
+
+        <div class="guide-modal-item">
+          <h3 class="courier-prime-regular-italic">
+            Allow location permission access to see the weather for your current
+            location.
+          </h3>
+
+          <img
+            style="
+              width: 100%;
+              border-radius: 1rem;
+              aspect-ratio: 16/9;
+              object-fit: cover;
+            "
+            src="./guide-assets/allow-permission.png"
+            alt=""
+          />
+        </div>
+
+        <div class="guide-modal-item">
+          <h3 class="courier-prime-regular-italic">
+            Complete the daily challenge and upload an image to show off your
+            progress! You can also view your recent completed challenges in the
+            "Recent Challenge Completed" section.
+          </h3>
+
+          <img
+            style="
+              width: 100%;
+              border-radius: 1rem;
+              aspect-ratio: 16/9;
+              object-fit: cover;
+            "
+            src="./guide-assets/complete-challenges.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- help button  -->
+    <button id="help-button">
+      <img
+        id="help-button-icon"
+        src="./info-circle-solid.svg"
+        alt="help button"
+      />
+    </button>
+
     <!-- sound effect button -->
     <button id="sound-effect-button">
       <img id="sound-icon" src="./sound-on-solid.svg" alt="Sound ON" />

@@ -56,4 +56,32 @@ export class Animate {
       iterations += 0.5;
     }, 50);
   };
+
+  static popUpAnimation(el: HTMLElement) {
+    animate(
+      el,
+      {
+        scale: [0, 1],
+        opacity: [0, 1],
+      },
+      {
+        type: "spring",
+        stiffness: 300,
+        damping: 15,
+      },
+    );
+  }
+
+  static popDownAnimation(el: HTMLElement) {
+    animate(
+      el,
+      {
+        scale: [1, 0],
+        opacity: [1, 0],
+      },
+      {
+        duration: 0.3,
+      },
+    );
+  }
 }

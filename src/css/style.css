@@ -188,7 +188,8 @@ a:active,
 }
 
 #sound-effect-button,
-#bg-music-button {
+#bg-music-button,
+#help-button {
   color: white;
   position: absolute;
   padding: 1rem;
@@ -198,6 +199,11 @@ a:active,
   box-shadow: 4px 4px 0px 0px var(--text-color);
   z-index: 10;
   transition: all 0.2s;
+}
+
+#help-button {
+  top: 20px;
+  right: 160px;
 }
 
 #sound-effect-button {
@@ -211,7 +217,8 @@ a:active,
 }
 
 #sound-effect-button:active,
-#bg-music-button:active {
+#bg-music-button:active,
+#help-button:active {
   transform: translateX(4px) translateY(4px);
   box-shadow: none;
 }
