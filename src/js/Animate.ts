@@ -6,7 +6,7 @@ export class Animate {
       element,
       {
         scale: [0, 1],
-        y: [20, 0],
+        transform: ["translateY(20px)", "translateY(0px)"],
         opacity: [0, 1],
       },
       {
@@ -81,6 +81,38 @@ export class Animate {
       },
       {
         duration: 0.3,
+      },
+    );
+  }
+
+  static slideUpFadeInAnimation(el: HTMLElement) {
+    animate(
+      el,
+      {
+        opacity: [0, 1],
+        y: [50, 0],
+      },
+      {
+        duration: 0.1,
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+      },
+    );
+  }
+
+  static slideDownFadeOutAnimation(el: HTMLElement) {
+    animate(
+      el,
+      {
+        y: [0, 50],
+        opacity: [1, 0],
+      },
+      {
+        duration: 0.1,
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
       },
     );
   }

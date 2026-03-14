@@ -116,13 +116,13 @@ export class MainUI {
     this.helpButtonElement.addEventListener("click", () => {
       SoundEffect.playClick();
       this.guideModalElement.style.display = "flex";
-      Animate.popUpAnimation(this.guideModalElement);
+      Animate.slideUpFadeInAnimation(this.guideModalElement);
       document.body.style.overflow = "hidden";
     });
 
     this.closeGuideButtonElement.addEventListener("click", () => {
       SoundEffect.playClick();
-      Animate.popDownAnimation(this.guideModalElement);
+      Animate.slideDownFadeOutAnimation(this.guideModalElement);
 
       setTimeout(() => {
         this.guideModalElement.style.display = "none";
