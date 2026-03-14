@@ -1,0 +1,26 @@
+How to Run the Project
+
+1. Make sure you have the following installed on your computer:
+   - Node.js
+   - npm or pnpm
+   - TypeScript
+
+2. Install all project dependencies by running:
+
+   pnpm i
+
+   or
+
+   npm i
+
+3. Start the development server by running:
+
+   pnpm run dev
+
+   or
+
+   npm run dev
+
+4. After running the command, a localhost link will appear in the terminal.
+
+5. Open the localhost link in your browser to view the project.

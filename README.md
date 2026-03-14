@@ -31,16 +31,32 @@ All credit belongs to the rightful creators of these assets.
 
 ## How to Run the Project
 
-To start the development server, run one of the following commands:
+### 1. Install Dependencies
+
+First install all project dependencies:
 
 ```bash
-npm run dev
+pnpm i
 ```
 
 or
 
 ```bash
+npm install
+```
+
+### 2. Start the Development Server
+
+Run one of the following commands:
+
+```bash
 pnpm run dev
+```
+
+or
+
+```bash
+npm run dev
 ```
 
 After running the command, open the local development URL shown in the terminal.
