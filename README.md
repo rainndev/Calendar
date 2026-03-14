@@ -6,6 +6,14 @@ The application includes features such as a calendar system, daily challenges, w
 
 ---
 
+## Live Website
+
+You can view the live project here:
+
+**[https://calendar-ipt.netlify.app/](https://calendar-ipt.netlify.app/)**
+
+---
+
 ## Technologies Used
 
 - **TypeScript**

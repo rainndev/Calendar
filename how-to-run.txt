@@ -1,11 +1,15 @@
+Live Website
+https://calendar-ipt.netlify.app/
+
+
 How to Run the Project
 
-1. Make sure you have the following installed on your computer:
+1. Make sure you have the following installed:
    - Node.js
    - npm or pnpm
    - TypeScript
 
-2. Install all project dependencies by running:
+2. Install all project dependencies:
 
    pnpm i
 
@@ -13,7 +17,7 @@ How to Run the Project
 
    npm i
 
-3. Start the development server by running:
+3. Start the development server:
 
    pnpm run dev
 
